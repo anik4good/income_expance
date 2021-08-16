@@ -4,7 +4,7 @@
 @notifyJs
 
 
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>--}}
+
 <!-- Stack array for including inline js or scripts -->
 @stack('script')
 

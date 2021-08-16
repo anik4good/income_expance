@@ -1,3 +1,8 @@
+function doAction() {
+    console.log("Executing action");
+
+}
+
 function deleteData(id) {
     Swal.fire({
         title: 'Are you sure?',
@@ -12,6 +17,8 @@ function deleteData(id) {
             document.getElementById('delete-form-' + id).submit();
         }
     })
+
+
 }
 
 
@@ -34,5 +41,7 @@ function updatetime() {
 function resetForm(formId) {
     document.getElementById(formId).reset();
 }
+
+
 
 

@@ -1,13 +1,13 @@
-@extends('layouts.main') 
+@extends('layouts.main')
 @section('title', 'Form Advance')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
 
-        <link rel="stylesheet" href="{{ asset('plugins/select2/dist/css/select2.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('plugins/summernote/dist/summernote-bs4.css') }}">
-        <link rel="stylesheet" href="{{ asset('plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
-        <link rel="stylesheet" href="{{ asset('plugins/mohithg-switchery/dist/switchery.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/backend/plugins/select2/dist/css/select2.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/backend/plugins/summernote/dist/summernote-bs4.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/backend/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/backend/plugins/mohithg-switchery/dist/switchery.min.css') }}">
 
     @endpush
     <div class="container-fluid">
@@ -581,18 +581,18 @@
             </div>
         </div>
 
-        
+
     </div>
 
     <!-- push external js -->
     @push('script')
-        <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
-        <script src="{{ asset('plugins/summernote/dist/summernote-bs4.min.js') }}"></script>
-        <script src="{{ asset('plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-        <script src="{{ asset('plugins/jquery.repeater/jquery.repeater.min.js') }}"></script>
-        <script src="{{ asset('plugins/mohithg-switchery/dist/switchery.min.js') }}"></script>
-      
-        <script src="{{ asset('js/form-advanced.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/select2/dist/js/select2.min.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/summernote/dist/summernote-bs4.min.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/jquery.repeater/jquery.repeater.min.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/mohithg-switchery/dist/switchery.min.js') }}"></script>
+
+        <script src="{{ asset('assets/backend/js/form-advanced.js') }}"></script>
     @endpush
 @endsection
-    
+

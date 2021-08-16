@@ -2,7 +2,9 @@
 
 
 use App\Http\Controllers\Backend\BackupController;
-use App\Http\Controllers\Backend\SettingController;
+    use App\Http\Controllers\Backend\ExpanseController;
+    use App\Http\Controllers\Backend\IncomeController;
+    use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Backend\RolesController;
 use App\Http\Controllers\Backend\UserController;
@@ -94,7 +96,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     // Backups      //only those have manage_backup permission will get access
-    Route::group(['middleware' => 'can:manage_backup','as' => 'settings.', 'prefix' => 'settings'], function(){
+    Route::group(['middleware' => 'can:manage_backup','as' => 'settings.'], function(){
         Route::get('backups', [BackupController::class, 'index'])->name('backups.index');
         Route::post('backups', [BackupController::class, 'store'])->name('backups.store');
         Route::delete('app/backups/{backup} ', [BackupController::class, 'destroy'])->name('backups.destroy');
@@ -105,13 +107,28 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 
-
-
 	// get permissions
 	Route::get('get-role-permissions-badge', [PermissionController::class,'getPermissionBadgeByRole']);
 
 
 
+    //////////////////////////////////////////////////Income Expanse Start from here//////////////////////////////////////////////////
+
+    // income      //only those have manage_user permission will get access
+    Route::group(['middleware' => 'can:manage_user',], function(){
+
+        Route::resource('income', IncomeController::class);
+        Route::get('income/datatable/get', [IncomeController::class, 'getIncome'])->name('incomes.datatable.get');
+        Route::get('/income/reports/download',  [IncomeController::class, 'download'])->name('income.download');
+    });
+
+    // Expanse      //only those have manage_user permission will get access
+    Route::group(['middleware' => 'can:manage_user',], function(){
+
+        Route::resource('expanse', ExpanseController::class);
+        Route::get('expanse/datatable/get', [ExpanseController::class, 'getIncome'])->name('expanses.datatable.get');
+        Route::get('/expanse/reports/download',  [ExpanseController::class, 'download'])->name('expanse.download');
+    });
 
 	//////////////////////////////////////////////////this is all demo with examples//////////////////////////////////////////////////
     // permission examples

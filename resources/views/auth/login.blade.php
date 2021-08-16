@@ -42,7 +42,8 @@
                         @csrf
                         <div class="form-group">
                             <input id="email" type="email" placeholder="Email"
-                                   class="form-control @error('email') is-invalid @enderror" name="email"
+                                   class="form-control @error('email') is-invalid @enderror"
+                                   name="email"
                                    value="admin@mail.com" required autocomplete="email" autofocus>
                             <i class="ik ik-user"></i>
                             @error('email')

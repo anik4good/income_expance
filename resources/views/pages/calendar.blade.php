@@ -1,10 +1,10 @@
-@extends('layouts.main') 
+@extends('layouts.main')
 @section('title', 'Calendar')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
-        <link rel="stylesheet" href="{{ asset('plugins/fullcalendar/dist/fullcalendar.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/backend/plugins/fullcalendar/dist/fullcalendar.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/backend/plugins/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css') }}">
     @endpush
 
     <div class="container-fluid">
@@ -70,7 +70,7 @@
                     </div>
                 </form>
             </div>
-        </div> 
+        </div>
 
         <div class="modal" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="addEventLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -155,15 +155,14 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
-       
+
     <!-- push external js -->
-    @push('script') 
-        <script src="{{ asset('plugins/moment/moment.js') }}"></script>
-        <script src="{{ asset('plugins/fullcalendar/dist/fullcalendar.min.js') }}"></script>
-        <script src="{{ asset('plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-        <script src="{{ asset('js/calendar.js') }}"></script>
+    @push('script')
+        <script src="{{ asset('assets/backend/plugins/moment/moment.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+        <script src="{{ asset('assets/backend/js/calendar.js') }}"></script>
     @endpush
 @endsection
-        

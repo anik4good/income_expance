@@ -1,13 +1,13 @@
-@extends('layouts.main') 
+@extends('layouts.main')
 @section('title', 'Form Picker')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
-        <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('plugins/jquery-minicolors/jquery.minicolors.css') }}">
-        <link rel="stylesheet" href="{{ asset('plugins/datedropper/datedropper.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/backend/plugins/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/backend/plugins/jquery-minicolors/jquery.minicolors.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/backend/plugins/datedropper/datedropper.min.css') }}">
     @endpush
-       
+
 
     <div class="container-fluid">
         <div class="page-header">
@@ -318,16 +318,16 @@
                     </div>
                 </div>
             </div>
-        </div>   
+        </div>
     </div>
 
     <!-- push external js -->
     @push('script')
 
-        <script src="{{ asset('plugins/moment/moment.js') }}"></script>
-        <script src="{{ asset('plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-        <script src="{{ asset('plugins/jquery-minicolors/jquery.minicolors.min.js') }}"></script>
-        <script src="{{ asset('plugins/datedropper/datedropper.min.js') }}"></script>
-        <script src="{{ asset('js/form-picker.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/moment/moment.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/jquery-minicolors/jquery.minicolors.min.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/datedropper/datedropper.min.js') }}"></script>
+        <script src="{{ asset('assets/backend/js/form-picker.js') }}"></script>
     @endpush
 @endsection

@@ -3,12 +3,10 @@
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
-        <link rel="stylesheet" href="{{ asset('asset/backend/plugins/select2/dist/css/select2.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/backend/plugins/select2/dist/css/select2.min.css') }}">
 
         <!--Dropify css-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css"
-              integrity="sha512-EZSUkJWTjzDlspOoPSpUFR0o0Xy7jdzW//6qhUkoZ9c4StFkVsp9fbbd0O06p9ELS3H486m4wmrCELjza4JEog=="
-              crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" href="{{asset('assets/backend/plugins/dropify/css/dropify.min.css')}}">
     @endpush
 
     <div class="container-fluid">
@@ -468,11 +466,9 @@
 
     <!-- push external js -->
     @push('script')
-        <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
+        <script src="{{ asset('assets/backend/plugins/select2/dist/js/select2.min.js') }}"></script>
         <!--Dropify script-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"
-                integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew=="
-                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{{ asset('assets/backend/plugins/dropify/js/dropify.min.js') }}"></script>
         <script>
             $(document).ready(function () {
                 // Dropify

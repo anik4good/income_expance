@@ -3,10 +3,8 @@
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
-
         <link rel="stylesheet" href="{{ asset('assets/backend/plugins/weather-icons/css/weather-icons.min.css') }}">
 
-        <link rel="stylesheet" href="{{ asset('assets/backend/plugins/chartist/dist/chartist.min.css') }}">
     @endpush
 
     <div class="container-fluid">

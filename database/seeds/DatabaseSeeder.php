@@ -1,7 +1,8 @@
 <?php
 
 use App\User;
-use Database\Seeders\UserSeeder;
+    use Database\Seeders\IncomeExpanseSeeder;
+    use Database\Seeders\UserSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +19,7 @@ class DatabaseSeeder extends Seeder
          $this->call(UserSeeder::class);
      //   $user = User::factory()->make(100);
 
-
+        $this->call(IncomeExpanseSeeder::class);
 
     }
 }

@@ -109,7 +109,7 @@ class UserSeeder extends Seeder
 
         // General Settings
         $settings = [
-            ['name' => 'site_title', 'value' => 'TECHNIK'],
+            ['name' => 'site_title', 'value' => 'kortoaExpence'],
             ['name' => 'site_description', 'value' => 'Your Starter kit'],
             // Logo Settings
             ['name' => 'site_logo', 'value' => null],
@@ -122,7 +122,7 @@ class UserSeeder extends Seeder
             ['name' => 'mail_password', 'value' => ''],
             ['name' => 'mail_encryption', 'value' => 'TLS'],
             ['name' => 'mail_from_address', 'value' => ''],
-            ['name' => 'mail_from_name', 'value' => 'Technik'],
+            ['name' => 'mail_from_name', 'value' => 'kortoaExpence'],
 
             // Socialite Settings
             ['name' => 'facebook_client_id', 'value' => null],
