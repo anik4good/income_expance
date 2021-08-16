@@ -187,7 +187,7 @@
                     <div class="card-header d-block">
                         <h3>{{$request->dateFilter}}'s Details</h3>
                     </div>
-                    {{--                     <div class="card-body">--}}
+                    {{--                     <div class="cardss-body">--}}
                     <div class="table-responsive">
                         <table id="simpletable" class="table table-hover table-bordered">
                             <thead>
