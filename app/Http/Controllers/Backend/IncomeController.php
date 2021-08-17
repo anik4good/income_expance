@@ -20,97 +20,94 @@
         {
 
 
-            $incomes = Income::with('category')
-                ->orderByDesc('created_at')
-                ->where(function ($q) use ($request) {
+            $incomes = Cache::remember('income-all', 60 * 60 * 24, function () use ($request) {
+                return Income::with('category')
+                    ->orderByDesc('created_at')
+                    ->where(function ($q) use ($request) {
 
-                    if ( $request->tracking_id )
-                    {
-                        $q->where('tracking_id', $request->tracking_id);
-                    }
-                })
-                ->where(function ($q) use ($request) {
+                        if ( $request->tracking_id )
+                        {
+                            $q->where('tracking_id', $request->tracking_id);
+                        }
+                    })
+                    ->where(function ($q) use ($request) {
 
-                    if ( $request->dateFilter == 'today' )
-                    {
+                        if ( $request->dateFilter == 'today' )
+                        {
 
-                        $today = Carbon::now();
-                        $q->whereBetween('created_at', [$today->startOfDay()->format('Y-m-d H:i:s'), $today->endOfDay()->format('Y-m-d H:i:s')]);
+                            $today = Carbon::now();
+                            $q->whereBetween('created_at', [$today->startOfDay()->format('Y-m-d H:i:s'), $today->endOfDay()->format('Y-m-d H:i:s')]);
 
-                    }
-
-
-                    elseif ( $request->dateFilter == 'yesterday' )
-                    {
-
-                        $yesterday = Carbon::now()->subDay();
-                        $q->whereBetween('created_at', [$yesterday->startOfDay()->format('Y-m-d H:i:s'), $yesterday->endOfDay()->format('Y-m-d H:i:s')]);
-
-                    }
-                    elseif ( $request->dateFilter == 'thisweek' )
-                    {
-
-                        $start = Carbon::now()->startOfWeek(Carbon::SATURDAY)->startOfDay()->format('Y-m-d H:i:s');
-                        $end = Carbon::now()->format('Y-m-d H:i:s');
-                        $q->whereBetween('created_at', [$start, $end]);
-
-                    }
-                    elseif ( $request->dateFilter == 'lastweek' )
-                    {
-
-                        $carbon = Carbon::now()->subWeek();
-                        $q->whereBetween('created_at', [$carbon->startOfWeek(Carbon::SATURDAY)->endOfDay()->format('Y-m-d H:i:s'), $carbon->endOfWeek(Carbon::FRIDAY)->startOfDay()->format('Y-m-d H:i:s')]);
-
-                    }
-                    elseif ( $request->dateFilter == '10days' )
-                    {
-
-                        $start = Carbon::now()->subDays(10)->startOfDay()->format('Y-m-d H:i:s');
-                        $end = Carbon::now()->format('Y-m-d H:i:s');
-                        $q->whereBetween('created_at', [$start, $end]);
+                        }
 
 
-                    }
+                        elseif ( $request->dateFilter == 'yesterday' )
+                        {
 
-                    elseif ( $request->dateFilter == 'thismonth' )
-                    {
+                            $yesterday = Carbon::now()->subDay();
+                            $q->whereBetween('created_at', [$yesterday->startOfDay()->format('Y-m-d H:i:s'), $yesterday->endOfDay()->format('Y-m-d H:i:s')]);
 
-                        $today = Carbon::now();
-                        $q->whereBetween('created_at', [$today->startOfMonth()->startOfDay()->format('Y-m-d H:i:s'), $today->endOfMonth()->endOfDay()->format('Y-m-d H:i:s')]);
+                        }
+                        elseif ( $request->dateFilter == 'thisweek' )
+                        {
 
-                    }
-                    elseif ( $request->dateFilter == 'lastmonth' )
-                    {
+                            $start = Carbon::now()->startOfWeek(Carbon::SATURDAY)->startOfDay()->format('Y-m-d H:i:s');
+                            $end = Carbon::now()->format('Y-m-d H:i:s');
+                            $q->whereBetween('created_at', [$start, $end]);
 
-                        $start = Carbon::now()->subMonth()->startOfMonth()->startOfMonth()->startOfDay()->format('Y-m-d H:i:s');
-                        $end = Carbon::now()->subMonth()->startOfMonth()->endOfMonth()->endOfDay()->format('Y-m-d H:i:s');
-                        $q->whereBetween('created_at', [$start, $end]);
+                        }
+                        elseif ( $request->dateFilter == 'lastweek' )
+                        {
 
-                    }
+                            $carbon = Carbon::now()->subWeek();
+                            $q->whereBetween('created_at', [$carbon->startOfWeek(Carbon::SATURDAY)->endOfDay()->format('Y-m-d H:i:s'), $carbon->endOfWeek(Carbon::FRIDAY)->startOfDay()->format('Y-m-d H:i:s')]);
 
-                    elseif ( $request->dateFilter == 'last3month' )
-                    {
+                        }
+                        elseif ( $request->dateFilter == '10days' )
+                        {
 
-                        $start = Carbon::now()->subDays(90)->startOfDay()->format('Y-m-d H:i:s');
-                        $end = Carbon::now()->format('Y-m-d H:i:s');
-                        $q->whereBetween('created_at', [$start, $end]);
-
-                    }
-                    else
-                    {
-                        $today = Carbon::now();
-                        $q->whereBetween('created_at', [$today->startOfDay()->format('Y-m-d H:i:s'), $today->endOfDay()->format('Y-m-d H:i:s')]);
-                    }
-                })
-                //  ->take(100)
-                ->get();
+                            $start = Carbon::now()->subDays(10)->startOfDay()->format('Y-m-d H:i:s');
+                            $end = Carbon::now()->format('Y-m-d H:i:s');
+                            $q->whereBetween('created_at', [$start, $end]);
 
 
-//            $incomes = Cache::remember('income-all', 60 * 60 * 24, function () use ($value) {
-//                return $value;
-//        });
+                        }
 
-            //   return $incomes;
+                        elseif ( $request->dateFilter == 'thismonth' )
+                        {
+
+                            $today = Carbon::now();
+                            $q->whereBetween('created_at', [$today->startOfMonth()->startOfDay()->format('Y-m-d H:i:s'), $today->endOfMonth()->endOfDay()->format('Y-m-d H:i:s')]);
+
+                        }
+                        elseif ( $request->dateFilter == 'lastmonth' )
+                        {
+
+                            $start = Carbon::now()->subMonth()->startOfMonth()->startOfMonth()->startOfDay()->format('Y-m-d H:i:s');
+                            $end = Carbon::now()->subMonth()->startOfMonth()->endOfMonth()->endOfDay()->format('Y-m-d H:i:s');
+                            $q->whereBetween('created_at', [$start, $end]);
+
+                        }
+
+                        elseif ( $request->dateFilter == 'last3month' )
+                        {
+
+                            $start = Carbon::now()->subDays(90)->startOfDay()->format('Y-m-d H:i:s');
+                            $end = Carbon::now()->format('Y-m-d H:i:s');
+                            $q->whereBetween('created_at', [$start, $end]);
+
+                        }
+                        else
+                        {
+                            $today = Carbon::now();
+                            $q->whereBetween('created_at', [$today->startOfDay()->format('Y-m-d H:i:s'), $today->endOfDay()->format('Y-m-d H:i:s')]);
+                        }
+                    })
+                    //  ->take(100)
+                    ->get();
+            });
+
+            //    return $incomes_cache;
 
             $request->dateFilter = empty($request->dateFilter) ? 'Today' : $request->dateFilter;
 
@@ -128,21 +125,24 @@
 
             $data = Income::all();
 
-            return Datatables::of($data)
-                ->make(true);
+         //   return Datatables::of($data)
+          //      ->make(true);
 
         }
 
 
-
-
         public function create()
         {
+
             $categories = Category::where('type', 'income')->get();
 
             //  $categories = Category::where('type', 'income')->with('incomes')->get();
             //return $categories;
-            $incomes = Income::Today()->with('category')->get();
+
+            $incomes = Cache::rememberForever('incomes.today', function () {
+                return Income::Today()->with('category')->get();
+                });
+
 
             // $incomes = Income::Today()->with('category',fn($query)=> $query->select('id','name'))->get();
 
@@ -209,7 +209,7 @@
                 else
                 {
                     // return with success msg
-                    notify()->success('Profile Successfully Updated.', 'Updated');
+                    notify()->error('No data in Inserted', 'Error');
 
                     return back();
                 }
@@ -263,12 +263,6 @@
 
             return back();
         }
-
-
-
-
-
-
 
 
         public function download(Request $request)
@@ -368,7 +362,7 @@
             );
 
 
-            $columns = array('Tracking ID', 'Category', 'Condition Amount','created_at');
+            $columns = array('Tracking ID', 'Category', 'Condition Amount', 'created_at');
 
 
             $callback = function () use ($incomes, $columns) {

@@ -1,5 +1,5 @@
 @extends('layouts.backend.app')
-@section('title','Income')
+@section('title','expanse')
 @section('content')
 
     <!-- push external head elements to head -->
@@ -24,8 +24,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-award bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Incomes')}}</h5>
-                            <span>{{ __('All Incomes')}}</span>
+                            <h5>{{ __('expanses')}}</h5>
+                            <span>{{ __('All expanses')}}</span>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="card table-card">
-                    <div class="card-header"><h3>Add Your Income Today</h3></div>
+                    <div class="card-header"><h3>Add Your expanse Today</h3></div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('income.store') }}" class="form-horizontal"
                               enctype="multipart/form-data">
@@ -60,7 +60,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="exampleInputUsername1">Select Category</label>
-                                        <select type="select" id="exampleCustomSelect" name="income_category"
+                                        <select type="select" id="exampleCustomSelect" name="expanse_category"
                                                 class="custom-select">
                                             @foreach($categories as $row)
                                                 <option value="{{$row->id}}">{{$row->name}}</option>
@@ -175,21 +175,24 @@
                                 <th class="">ID</th>
                                 <th class="">Tracking ID</th>
                                 <th class="">Category</th>
-                                <th class="">image</th>
-                                <th class="">CN Amount</th>
-                                <th class="">CN Charge</th>
-                                <th class="">Booking Charge</th>
-                                <th class="">Labour Charge</th>
+                                <th class="">CN Delivery</th>
+                                <th class="">CN Advance Payment</th>
+                                <th class="">T.T Delivery</th>
+                                <th class="">D.D Delivery</th>
+                                <th class="">H/O Payment</th>
+                                <th class="">Advance R/N</th>
+                                <th class="">Loan R/N</th>
+                                <th class="">Commission</th>
                                 <th class="">Other Amount</th>
-                                <th class="">Total Amount</th>
+                                <th class="">Previous Cash</th>
                                 <th class="">Notes</th>
                                 <th class="">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
                             {{--                                    @foreach($categories as $category)--}}
-                            {{--                                        @foreach($category->incomes as $key=>$row)--}}
-                            @foreach($incomes as $key=>$row)
+                            {{--                                        @foreach($category->expanses as $key=>$row)--}}
+                            @foreach($expanses as $key=>$row)
                                 <tr>
 
                                     <td class="">
@@ -211,20 +214,37 @@
                                         >
 
                                     </td>
+
                                     <td class="">
-                                        {{ $row->condition_amount }}
+                                        {{ $row->condition_delivery }}
                                     </td>
 
                                     <td class="">
-                                        {{ $row->condition_charge }}
+                                        {{ $row->condition_advance_payment }}
                                     </td>
 
                                     <td class="">
-                                        {{ $row->booking_charge }}
+                                        {{ $row->tt_delivery }}
                                     </td>
 
                                     <td class="">
-                                        {{ $row->labour_charge }}
+                                        {{ $row->dd_delivery }}
+                                    </td>
+
+                                    <td class="">
+                                        {{ $row->ho_payment }}
+                                    </td>
+
+                                    <td class="">
+                                        {{ $row->advance_rn }}
+                                    </td>
+
+                                    <td class="">
+                                        {{ $row->loan_rn }}
+                                    </td>
+
+                                    <td class="">
+                                        {{ $row->commission }}
                                     </td>
 
                                     <td class="">
@@ -233,12 +253,13 @@
 
 
                                     <td class="">
-                                        {{ $row->total_amount }}
+                                        {{ $row->previous_cash }}
                                     </td>
 
                                     <td class="">
                                         {{ $row->notes }}
                                     </td>
+
                                     <td class="">
                                         <button type="submit"
                                                 onclick="deleteData({{ $row->id }})"><i class=" ik ik-trash-2 f-16
@@ -246,7 +267,7 @@
 
 
                                         <form id="delete-form-{{ $row->id }}"
-                                              action="{{ route('income.destroy',$row->id) }}" method="POST"
+                                              action="{{ route('expanse.destroy',$row->id) }}" method="POST"
                                               style="display: none;">
                                             @csrf()
                                             @method('DELETE')
@@ -263,13 +284,16 @@
                             <th class="">ID</th>
                             <th class="">Tracking ID</th>
                             <th class="">Category</th>
-                            <th class="">image</th>
-                            <th class="">CN Amount</th>
-                            <th class="">CN Charge</th>
-                            <th class="">Booking Charge</th>
-                            <th class="">Labour Charge</th>
+                            <th class="">CN Delivery</th>
+                            <th class="">CN Advance Payment</th>
+                            <th class="">T.T Delivery</th>
+                            <th class="">D.D Delivery</th>
+                            <th class="">H/O Payment</th>
+                            <th class="">Advance R/N</th>
+                            <th class="">Loan R/N</th>
+                            <th class="">Commission</th>
                             <th class="">Other Amount</th>
-                            <th class="">Total Amount</th>
+                            <th class="">Previous Cash</th>
                             <th class="">Notes</th>
                             <th class="">Actions</th>
                             </tfoot>

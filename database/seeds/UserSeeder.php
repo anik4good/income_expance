@@ -158,9 +158,9 @@ class UserSeeder extends Seeder
 
 
         $couriers = [
-            ['id' => 1, 'tittle' => 'Kortoa Courier Service', 'domain_name' => 'kortoa.courier.com', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['id' => 2, 'tittle' => 'test1 Courier Service', 'domain_name' => 'test1.courier.com', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['id' => 3, 'tittle' => 'test2 Courier Service', 'domain_name' => 'test2.courier.com', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['id' => 1, 'name' => 'Kortoa Courier Service', 'domain_name' => 'kortoa.courier.com', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['id' => 2, 'name' => 'test1 Courier Service', 'domain_name' => 'test1.courier.com', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['id' => 3, 'name' => 'test2 Courier Service', 'domain_name' => 'test2.courier.com', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
 
         ];
 
