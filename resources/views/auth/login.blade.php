@@ -44,7 +44,7 @@
                             <input id="email" type="email" placeholder="Email"
                                    class="form-control @error('email') is-invalid @enderror"
                                    name="email"
-                                   value="admin@mail.com" required autocomplete="email" autofocus>
+                                   value="{{ (env('APP_ENV')=='local') ? 'admin@mail.com' : '' }}" required autocomplete="email" autofocus>
                             <i class="ik ik-user"></i>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
                         <div class="form-group">
                             <input id="password" type="password" placeholder="Password"
                                    class="form-control @error('password') is-invalid @enderror" name="password"
-                                   value="password" required>
+                                   value="{{ (env('APP_ENV')=='local') ? 'password' : '' }}" required>
                             <i class="ik ik-lock"></i>
                             @error('password')
                             <span class="invalid-feedback" role="alert">
