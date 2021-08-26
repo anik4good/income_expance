@@ -3,7 +3,7 @@
  */
 
 /**
- * @summary     CellEdit
+ * @reports     CellEdit
  * @description Make a cell editable when clicked upon
  * @version     1.0.19
  * @file        dataTables.editCell.js

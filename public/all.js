@@ -291,7 +291,7 @@
             }
         })();
         var s = {
-            elements: d.elements || "abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video",
+            elements: d.elements || "abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section reports template time video",
             version: c,
             shivCSS: d.shivCSS !== !1,
             supportsUnknownElements: k,

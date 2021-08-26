@@ -181,7 +181,7 @@
                                 <th class="">Booking Charge</th>
                                 <th class="">Labour Charge</th>
                                 <th class="">Other Amount</th>
-                                <th class="">Total Amount</th>
+                                <th class="">Previous Cash</th>
                                 <th class="">Notes</th>
                                 <th class="">Actions</th>
                             </tr>
@@ -233,7 +233,7 @@
 
 
                                     <td class="">
-                                        {{ $row->total_amount }}
+                                        {{ $row->previous_cash }}
                                     </td>
 
                                     <td class="">

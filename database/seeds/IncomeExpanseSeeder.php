@@ -69,7 +69,7 @@
 
                 [
 
-                      //8
+                    //7
                     'name' => 'Other',
                     'type' => 'income',
                 ],
@@ -132,9 +132,11 @@
 
 
             DB::table('categories')->insert($categories);
-
-            for ( $i = 0; $i < 5000; $i++ )
+            for ( $i = 0; $i < 1000; $i++ )
             {
+//                $yesterday = Carbon::now()->subDay();
+//                $previous_cash = Income::whereBetween('created_at', [$yesterday->startOfDay()->format('Y-m-d H:i:s'), $yesterday->endOfDay()->format('Y-m-d H:i:s')])->sum('condition_amount');
+//                $yesterday = $previous_cash->created_at->subDay();
 
                 Income::insert([
                     'category_id' => rand(1, 7),
@@ -149,6 +151,7 @@
                     'created_at' => $faker->dateTimeBetween('-120 days', now()),
                     'updated_at' => $faker->dateTimeBetween('-10 days', now())
                 ]);
+
 
                 Expanse::insert([
                     'category_id' => rand(8, 16),
@@ -167,7 +170,9 @@
                     'created_at' => $faker->dateTimeBetween('-120 days', now()),
                     'updated_at' => $faker->dateTimeBetween('-10 days', now())
                 ]);
+
             }
+
 
         }
 

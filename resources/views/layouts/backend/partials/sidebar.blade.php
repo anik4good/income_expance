@@ -103,6 +103,22 @@
                     </div>
                 </div>
 
+
+
+                <div
+                    class="nav-item {{ ($segment1 == 'reports') ? 'active open' : '' }} has-sub">
+                    <a href="#"><i class="ik ik-user"></i><span>{{ __('Reports')}}</span></a>
+                    <div class="submenu-content">
+                    @can('manage_user')
+                        <!-- only those have manage_user permission will get access -->
+
+                            <a href="{{route('report.index')}}"
+                               class="menu-item {{ Request::is('reports')  ? 'active' : '' }}">{{ __('reports')}}</a>
+                        @endcan
+
+                    </div>
+                </div>
+
                 <!-- ******************************************************************************************************************************** -->
 
             @can('manage_setting')

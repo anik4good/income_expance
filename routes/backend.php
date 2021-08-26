@@ -4,6 +4,7 @@
 use App\Http\Controllers\Backend\BackupController;
     use App\Http\Controllers\Backend\ExpanseController;
     use App\Http\Controllers\Backend\IncomeController;
+    use App\Http\Controllers\Backend\ReportController;
     use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Backend\RolesController;
@@ -130,7 +131,19 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/expanse/reports/download',  [ExpanseController::class, 'download'])->name('expanse.download');
     });
 
-	//////////////////////////////////////////////////this is all demo with examples//////////////////////////////////////////////////
+
+
+    // Reports      //only those have manage_user permission will get access
+    Route::group(['middleware' => 'can:manage_user',], function(){
+        Route::get('reports/', [ReportController::class, 'index'])->name('report.index');
+        Route::get('/reports/download',  [ReportController::class, 'download'])->name('report.download');
+    });
+
+
+
+
+
+    //////////////////////////////////////////////////this is all demo with examples//////////////////////////////////////////////////
     // permission examples
     Route::get('/permission-example', function () {
         return view('pages.permission-example');

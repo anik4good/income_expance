@@ -52,7 +52,7 @@
                 <div class="card table-card">
                     <div class="card-header"><h3>Add Your expanse Today</h3></div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('income.store') }}" class="form-horizontal"
+                        <form method="POST" action="{{ route('expanse.store') }}" class="form-horizontal"
                               enctype="multipart/form-data">
                             @csrf
 
@@ -86,41 +86,73 @@
 
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Conditionamount">Condition Amount</label>
-                                        <input type="number" class="form-control" placeholder="Condition Amount"
-                                               name="condition_amount">
+                                        <label for="condition_delivery">Condition Delivery</label>
+                                        <input type="number" class="form-control" placeholder="Condition Delivery"
+                                               name="condition_delivery">
                                     </div>
                                 </div>
 
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Condition">Condition Charge</label>
-                                        <input type="number" class="form-control" placeholder="Condition Charge"
-                                               name="condition_charge">
+                                        <label for="condition_advance_payment">Condition Advance Payment</label>
+                                        <input type="number" class="form-control" placeholder="Condition Advance Payment"
+                                               name="condition_advance_payment">
                                     </div>
                                 </div>
 
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Booking">Booking Charge</label>
-                                        <input type="number" class="form-control" placeholder="Booking Charge"
-                                               name="booking_charge">
+                                        <label for="tt_delivery">TT Delivery</label>
+                                        <input type="number" class="form-control" placeholder="TT Delivery"
+                                               name="tt_delivery">
                                     </div>
                                 </div>
 
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Labour">Labour Charge</label>
-                                        <input type="number" class="form-control" placeholder="Labour Charge"
-                                               name="labour_charge">
+                                        <label for="dd_delivery">DD Delivery</label>
+                                        <input type="number" class="form-control" placeholder="DD Delivery"
+                                               name="dd_delivery">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="Amounts">Other Amounts</label>
-                                        <input type="number" class="form-control" placeholder="Other Amounts"
+                                        <label for="ho_payment">H/O Payment</label>
+                                        <input type="number" class="form-control" placeholder="H/O Payment"
+                                               name="ho_payment">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="advance_rn">Advance R/N</label>
+                                        <input type="number" class="form-control" placeholder="Advance R/N"
+                                               name="advance_rn">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="loan_rn">Loan R/N</label>
+                                        <input type="number" class="form-control" placeholder="Loan R/N"
+                                               name="loan_rn">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="commission">Commission</label>
+                                        <input type="number" class="form-control" placeholder="Commission"
+                                               name="commission">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="other_amount">Other Amount</label>
+                                        <input type="number" class="form-control" placeholder="Other Amount"
                                                name="other_amount">
                                     </div>
                                 </div>
@@ -175,6 +207,7 @@
                                 <th class="">ID</th>
                                 <th class="">Tracking ID</th>
                                 <th class="">Category</th>
+                                <th class="">image</th>
                                 <th class="">CN Delivery</th>
                                 <th class="">CN Advance Payment</th>
                                 <th class="">T.T Delivery</th>
@@ -284,6 +317,7 @@
                             <th class="">ID</th>
                             <th class="">Tracking ID</th>
                             <th class="">Category</th>
+                            <th class="">image</th>
                             <th class="">CN Delivery</th>
                             <th class="">CN Advance Payment</th>
                             <th class="">T.T Delivery</th>

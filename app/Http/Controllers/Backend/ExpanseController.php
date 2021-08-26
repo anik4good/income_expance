@@ -128,7 +128,7 @@ class ExpanseController extends Controller
 
         //  $categories = Category::where('type', 'expanse')->with('expanses')->get();
         //return $categories;
-        $expanses = Expanse::Today()->with('category')->get();
+        $expanses = Expanse::Today()->with('category')->orderByDesc('created_at')->get();
 
         // $expanses = expanse::Today()->with('category',fn($query)=> $query->select('id','name'))->get();
 
@@ -139,14 +139,17 @@ class ExpanseController extends Controller
     public function store(Request $request)
     {
 
-
         // insert expanse
         $validator = Validator::make($request->all(), [
             'tracking_id' => 'required|numeric',
-            'condition_amount' => 'numeric',
-            'condition_charge' => 'numeric',
-            'booking_charge' => 'numeric',
-            'labour_charge' => 'numeric',
+            'condition_delivery' => 'numeric',
+            'condition_advance_payment' => 'numeric',
+            'tt_delivery' => 'numeric',
+            'dd_delivery' => 'numeric',
+            'ho_payment' => 'numeric',
+            'advance_rn' => 'numeric',
+            'loan_rn' => 'numeric',
+            'commission' => 'numeric',
             'other_amount' => 'numeric',
             'receipt' => 'nullable|image',
             'notes' => 'string|max:255',
@@ -154,9 +157,7 @@ class ExpanseController extends Controller
 
         if ( $validator->fails() )
         {
-            // return with error msg
-            //    notify()->error($validator->messages()->first(), 'Error');
-            //   return redirect()->back()->withInput()->with('error', $validator->messages()->first());
+
             return redirect()->back()->withInput()->withErrors($validator->errors());
 
         }
@@ -167,12 +168,15 @@ class ExpanseController extends Controller
             $expanse = Expanse::create([
                 'category_id' => $request->expanse_category,
                 'tracking_id' => $request->tracking_id,
-                'condition_amount' => $request->condition_amount,
-                'condition_charge' => $request->condition_charge,
-                'booking_charge' => $request->booking_charge,
-                'labour_charge' => $request->labour_charge,
+                'condition_delivery' => $request->condition_delivery,
+                'condition_advance_payment' => $request->condition_advance_payment,
+                'tt_delivery' => $request->tt_delivery,
+                'dd_delivery' => $request->dd_delivery,
+                'ho_payment' => $request->ho_payment,
+                'advance_rn' => $request->advance_rn,
+                'loan_rn' => $request->loan_rn,
+                'commission' => $request->commission,
                 'other_amount' => $request->other_amount,
-                'total_amount' => $request->total_amount,
                 'notes' => $request->notes,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
