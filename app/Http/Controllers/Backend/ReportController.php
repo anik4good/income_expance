@@ -13,6 +13,7 @@
 
         public function index(Request $request)
         {
+
             $incomes = Income::with('category')
                 ->orderByDesc('created_at')
                 ->where(function ($q) use ($request) {
@@ -20,11 +21,25 @@
                     if ( $request->tracking_id )
                     {
                         $q->where('tracking_id', $request->tracking_id);
+
+
                     }
+
                 })
                 ->where(function ($q) use ($request) {
 
-                    if ( $request->dateFilter == 'today' )
+
+                    if ( $request->custom_date )
+                    {
+
+                        $old_date = $request->custom_date;
+                        $date = Carbon::createFromFormat('Y-m-d', $old_date);
+                        $q->whereBetween('created_at', [$date->startOfDay()->format('Y-m-d H:i:s'), $date->endOfDay()->format('Y-m-d H:i:s')]);
+
+                    }
+
+
+                    elseif ( $request->dateFilter == 'today' )
                     {
 
                         $today = Carbon::now();
@@ -184,18 +199,27 @@
 
             $total_income = $incomes->sum('condition_amount') + $incomes->sum('condition_charge') + $incomes->sum('booking_charge') + $incomes->sum('labour_charge') + $incomes->sum('other_amount');
             $total_expanse = $expanses->sum('condition_delivery') + $expanses->sum('condition_advance_payment') + $expanses->sum('tt_delivery') + $expanses->sum('dd_delivery') + $expanses->sum('ho_payment');
-            $cash = $total_income-$total_expanse;
-
-
-$previousCash = previousCash($request->dateFilter);
+            $cash = $total_income - $total_expanse;
 
 
 
 
+$previousCash =0;
+            if ($request->dateFilter)
+            {
+                $previousCash = previousCash($request->dateFilter);
+                $request->dateFilter = empty($request->dateFilter) ? 'Today' : $request->dateFilter;
+            }
 
-            $request->dateFilter = empty($request->dateFilter) ? 'Today' : $request->dateFilter;
 
-            return view('backend.reports.index', compact('incomes', 'expanses', 'total_income', 'total_expanse','cash','previousCash', 'request'));
+            if ($request->custom_date)
+            {
+                $previousCash = previousCash($request->dateFilter);
+                $request->custom_date = empty($request->custom_date) ? 'Today' : $request->custom_date;
+            }
+
+
+            return view('backend.reports.index', compact('incomes', 'expanses', 'total_income', 'total_expanse', 'cash', 'previousCash', 'request'));
         }
 
 
@@ -320,7 +344,6 @@ $previousCash = previousCash($request->dateFilter);
             return response()->stream($callback, 200, $headers);
 
         }
-
 
 
     }

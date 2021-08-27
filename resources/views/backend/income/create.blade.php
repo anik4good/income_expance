@@ -183,6 +183,7 @@
                                 <th class="">Other Amount</th>
                                 <th class="">Previous Cash</th>
                                 <th class="">Notes</th>
+                                <th class="">Created at</th>
                                 <th class="">Actions</th>
                             </tr>
                             </thead>
@@ -239,6 +240,11 @@
                                     <td class="">
                                         {{ $row->notes }}
                                     </td>
+
+                                    <td class="">
+                                        {{date('d-M h:i:a', strtotime($row->created_at)) }}
+                                    </td>
+
                                     <td class="">
                                         <button type="submit"
                                                 onclick="deleteData({{ $row->id }})"><i class=" ik ik-trash-2 f-16
@@ -271,6 +277,7 @@
                             <th class="">Other Amount</th>
                             <th class="">Total Amount</th>
                             <th class="">Notes</th>
+                            <th class="">Created at</th>
                             <th class="">Actions</th>
                             </tfoot>
                         </table>

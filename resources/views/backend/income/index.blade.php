@@ -75,7 +75,7 @@
                             <div class="position-relative form-group">
                                 <div>
                                     <div class="custom-checkbox custom-control custom-control-inline">
-                                        <input type="number" placeholder="Tracking ID" name="tracking_id" class="form-control">
+                                        <input type="number" placeholder="Tracking ID" name="tracking_id" class="form-control" value="{{$request->tracking_id}}">
                                     </div>
 
 
@@ -94,13 +94,12 @@
                                         </select>
                                     </div>
 
-{{--                                    'today' => 'Today',--}}
-{{--                                    'yesterday' => 'Yesterday',--}}
-{{--                                    'thisweek' => 'This Week',--}}
-{{--                                    'lastweek' => 'Last Week',--}}
-{{--                                    '10days' => 'Last 10 days',--}}
-{{--                                    'thismonth' => 'This Month',--}}
-{{--                                    'lastmonth' => 'Last Month',--}}
+                                    <div class="custom-checkbox custom-control custom-control-inline">
+                                        <input type="date" placeholder="Specific Date" name="custom_date"
+                                               class="form-control"  value="">
+                                    </div>
+
+
                                     <div class="custom-checkbox custom-control custom-control-inline">
                                         <button class="btn btn-outline-success btn-lg btn-block">Filter
                                         </button>
@@ -120,7 +119,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-block">
-                        <h5> {{$request->dateFilter}}'s Summary</h5>
+                        <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Income Summary</h3>
 
 
 
@@ -185,7 +184,7 @@
              <div class="col-md-12">
                  <div class="card table-card">
                      <div class="card-header d-block">
-                         <h3>{{$request->dateFilter}}'s Details</h3>
+                         <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Income Details</h3>
                      </div>
 {{--                     <div class="card-body">--}}
                          <div class="table-responsive">
@@ -256,7 +255,7 @@
                                      </td>
 
                                      <td class="">
-                                         {{ $row->created_at }}
+                                         {{date('d-M h:i:a', strtotime($row->created_at)) }}
                                      </td>
                                      <td class="">
                                          <button type="submit"
@@ -283,7 +282,6 @@
                              <th class="">ID</th>
                              <th class="">Tracking ID</th>
                              <th class="">Category</th>
-                             <th class="">image</th>
                              <th class="">CN Amount</th>
                              <th class="">CN Charge</th>
                              <th class="">Booking Charge</th>

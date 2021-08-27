@@ -67,8 +67,8 @@
                             <div class="position-relative form-group">
                                 <div>
                                     <div class="custom-checkbox custom-control custom-control-inline">
-                                        <input type="number" placeholder="Tracking ID" name="tracking_id"
-                                               class="form-control">
+                                        <input type="date" placeholder="Date" name="custom_date"
+                                               class="form-control"  >
                                     </div>
 
 
@@ -113,7 +113,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-block">
-                        <h5> {{$request->dateFilter}}'s Income Expanse Summary</h5>
+                        <h5> {{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Income Expanse Summary</h5>
 
                     </div>
 
@@ -164,7 +164,7 @@
             <div class="col-md-12">
                 <div class="card table-card">
                     <div class="card-header d-block bg-green">
-                        <h3>{{$request->dateFilter}}'s Income Summary</h3>
+                        <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Income Summary</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered">
@@ -226,7 +226,7 @@
         <div class="col-md-12">
             <div class="card table-card">
                 <div class="card-header d-block bg-warning">
-                    <h3>{{$request->dateFilter}}'s Expanse Summary</h3>
+                    <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Expanse Summary</h3>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered">

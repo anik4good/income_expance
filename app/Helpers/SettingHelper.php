@@ -50,7 +50,7 @@
                     elseif ( $request == 'thisweek' )
                     {
 
-                        $start = Carbon::now()->startOfWeek(Carbon::SATURDAY)->startOfDay()->format('Y-m-d H:i:s');
+                        $start = Carbon::now()->subDays(1)->startOfWeek(Carbon::SATURDAY)->startOfDay()->format('Y-m-d H:i:s');
                         $end = Carbon::now()->format('Y-m-d H:i:s');
                         $q->whereBetween('created_at', [$start, $end]);
 

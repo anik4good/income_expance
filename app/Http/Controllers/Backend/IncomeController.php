@@ -28,10 +28,23 @@
                     {
                         $q->where('tracking_id', $request->tracking_id);
                     }
+
                 })
                 ->where(function ($q) use ($request) {
 
-                    if ( $request->dateFilter == 'today' )
+
+                    if ( $request->custom_date )
+                    {
+
+                        $old_date = $request->custom_date;
+                        $date = Carbon::createFromFormat('Y-m-d', $old_date);
+                        $q->whereBetween('created_at', [$date->startOfDay()->format('Y-m-d H:i:s'), $date->endOfDay()->format('Y-m-d H:i:s')]);
+
+                    }
+
+
+
+                   else if ( $request->dateFilter == 'today' )
                     {
 
                         $today = Carbon::now();
@@ -121,7 +134,18 @@
 //            });
 
 
-            $request->dateFilter = empty($request->dateFilter) ? 'Today' : $request->dateFilter;
+            if ($request->dateFilter)
+            {
+                $previousCash = previousCash($request->dateFilter);
+                $request->dateFilter = empty($request->dateFilter) ? 'Today' : $request->dateFilter;
+            }
+
+
+            if ($request->custom_date)
+            {
+                $previousCash = previousCash($request->dateFilter);
+                $request->custom_date = empty($request->custom_date) ? 'Today' : $request->custom_date;
+            }
 
             return view('backend.income.index', compact('incomes', 'request'));
 
@@ -155,7 +179,7 @@
 //                return Income::Today()->with('category')->get();
 //            });
 
-            $incomes = Income::Today()->with('category')->get();
+            $incomes = Income::Today()->with('category')->orderByDesc('created_at')->get();
 
             // $incomes = Income::Today()->with('category',fn($query)=> $query->select('id','name'))->get();
 
