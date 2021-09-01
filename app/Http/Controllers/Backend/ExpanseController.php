@@ -139,18 +139,11 @@ class ExpanseController extends Controller
     public function store(Request $request)
     {
 
+
         // insert expanse
         $validator = Validator::make($request->all(), [
             'tracking_id' => 'required|numeric',
-            'condition_delivery' => 'numeric',
-            'condition_advance_payment' => 'numeric',
-            'tt_delivery' => 'numeric',
-            'dd_delivery' => 'numeric',
-            'ho_payment' => 'numeric',
-            'advance_rn' => 'numeric',
-            'loan_rn' => 'numeric',
-            'commission' => 'numeric',
-            'other_amount' => 'numeric',
+            'amount' => 'numeric',
             'receipt' => 'nullable|image',
             'notes' => 'string|max:255',
         ]);
@@ -168,15 +161,10 @@ class ExpanseController extends Controller
             $expanse = Expanse::create([
                 'category_id' => $request->expanse_category,
                 'tracking_id' => $request->tracking_id,
+                'booking_date' => $request->booking_date,
                 'condition_delivery' => $request->condition_delivery,
-                'condition_advance_payment' => $request->condition_advance_payment,
-                'tt_delivery' => $request->tt_delivery,
-                'dd_delivery' => $request->dd_delivery,
-                'ho_payment' => $request->ho_payment,
-                'advance_rn' => $request->advance_rn,
-                'loan_rn' => $request->loan_rn,
-                'commission' => $request->commission,
-                'other_amount' => $request->other_amount,
+                'amount' => $request->amount,
+                'quantity' => $request->quantity,
                 'notes' => $request->notes,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

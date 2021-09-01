@@ -61,14 +61,6 @@
 
                     }
 
-                    elseif ( $request->dateFilter  == 'porsu' )
-                    {
-
-                        $yesterday = Carbon::now()->subDays(2);
-                        $q->whereBetween('created_at', [$yesterday->startOfDay()->format('Y-m-d H:i:s'), $yesterday->endOfDay()->format('Y-m-d H:i:s')]);
-
-                    }
-
 
                     elseif ( $request->dateFilter == 'thisweek' )
                     {
@@ -218,11 +210,13 @@
                 $income = Income::create([
                     'category_id' => $request->income_category,
                     'tracking_id' => $request->tracking_id,
+                    'booking_date' => $request->booking_date,
                     'condition_amount' => $request->condition_amount,
                     'condition_charge' => $request->condition_charge,
                     'booking_charge' => $request->booking_charge,
                     'labour_charge' => $request->labour_charge,
                     'other_amount' => $request->other_amount,
+                    'quantity' => $request->quantity,
                     'total_amount' => $request->total_amount,
                     'notes' => $request->notes,
                     'created_at' => Carbon::now(),

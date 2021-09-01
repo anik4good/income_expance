@@ -1,5 +1,5 @@
 @extends('layouts.backend.app')
-@section('title','income')
+@section('title','Cash in')
 
 
 @section('content')
@@ -22,7 +22,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-award bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Income')}}</h5>
+                            <h5>{{ __('Cash in')}}</h5>
                             <span>{{$request->dateFilter}}</span>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-block">
-                        <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Income Summary</h3>
+                        <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Cash in Summary</h3>
 
 
 
@@ -184,7 +184,7 @@
              <div class="col-md-12">
                  <div class="card table-card">
                      <div class="card-header d-block">
-                         <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Income Details</h3>
+                         <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Cash in Details</h3>
                      </div>
 {{--                     <div class="card-body">--}}
                          <div class="table-responsive">
@@ -194,6 +194,7 @@
                                  <th class="">ID</th>
                                  <th class="">Tracking ID</th>
                                  <th class="">Category</th>
+                                 <th class="">Booking Date</th>
                                  <th class="">CN Amount</th>
                                  <th class="">CN Charge</th>
                                  <th class="">Booking Charge</th>
@@ -223,7 +224,9 @@
                                          {{ $row->category->name }}
                                      </td>
 
-
+                                     <td class="">
+                                         {{date('d-M h:i:a', strtotime($row->booking_date)) }}
+                                     </td>
 
                                      <td class="">
                                          {{ $row->condition_amount }}
@@ -282,6 +285,7 @@
                              <th class="">ID</th>
                              <th class="">Tracking ID</th>
                              <th class="">Category</th>
+                             <th class="">Booking Date</th>
                              <th class="">CN Amount</th>
                              <th class="">CN Charge</th>
                              <th class="">Booking Charge</th>

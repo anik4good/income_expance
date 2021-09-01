@@ -1,5 +1,5 @@
 @extends('layouts.backend.app')
-@section('title','expanse')
+@section('title','Cash Out')
 @section('content')
 
     <!-- push external head elements to head -->
@@ -24,8 +24,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-award bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('expanses')}}</h5>
-                            <span>{{ __('All expanses')}}</span>
+                            <h5>{{ __('Cash Out')}}</h5>
+                            <span>{{ __('All Cash Out')}}</span>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="card table-card">
-                    <div class="card-header"><h3>Add Your expanse Today</h3></div>
+                    <div class="card-header"><h3>Add Your Cash Out Today</h3></div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('expanse.store') }}" class="form-horizontal"
                               enctype="multipart/form-data">
@@ -86,77 +86,28 @@
 
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="condition_delivery">Condition Delivery</label>
-                                        <input type="number" class="form-control" placeholder="Condition Delivery"
-                                               name="condition_delivery">
+                                        <label for="booking_date">Booking Date</label>
+                                        <input type="date" class="form-control" placeholder="Booking Date"
+                                               name="booking_date">
                                     </div>
                                 </div>
 
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="condition_advance_payment">Condition Advance Payment</label>
-                                        <input type="number" class="form-control" placeholder="Condition Advance Payment"
-                                               name="condition_advance_payment">
+                                        <label for="amount">Amount</label>
+                                        <input type="number" class="form-control" placeholder="Amount"
+                                               name="amount">
                                     </div>
                                 </div>
 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="tt_delivery">TT Delivery</label>
-                                        <input type="number" class="form-control" placeholder="TT Delivery"
-                                               name="tt_delivery">
-                                    </div>
-                                </div>
 
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="dd_delivery">DD Delivery</label>
-                                        <input type="number" class="form-control" placeholder="DD Delivery"
-                                               name="dd_delivery">
+                                        <label for="amount">Quantity</label>
+                                        <input type="number" class="form-control" placeholder="Quantity"
+                                               name="quantity">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="ho_payment">H/O Payment</label>
-                                        <input type="number" class="form-control" placeholder="H/O Payment"
-                                               name="ho_payment">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="advance_rn">Advance R/N</label>
-                                        <input type="number" class="form-control" placeholder="Advance R/N"
-                                               name="advance_rn">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="loan_rn">Loan R/N</label>
-                                        <input type="number" class="form-control" placeholder="Loan R/N"
-                                               name="loan_rn">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="commission">Commission</label>
-                                        <input type="number" class="form-control" placeholder="Commission"
-                                               name="commission">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="other_amount">Other Amount</label>
-                                        <input type="number" class="form-control" placeholder="Other Amount"
-                                               name="other_amount">
-                                    </div>
-                                </div>
-
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="notes">Notes</label>
@@ -186,6 +137,7 @@
                                         <!-- /.card -->
                                     </div>
                                 </div>
+
                             </div>
 
                             <button type="submit" class="btn btn-info btn-block"><i class="ik ik-clipboard"></i>Submit</button>
@@ -208,15 +160,9 @@
                                 <th class="">Tracking ID</th>
                                 <th class="">Category</th>
                                 <th class="">image</th>
-                                <th class="">CN Delivery</th>
-                                <th class="">CN Advance Payment</th>
-                                <th class="">T.T Delivery</th>
-                                <th class="">D.D Delivery</th>
-                                <th class="">H/O Payment</th>
-                                <th class="">Advance R/N</th>
-                                <th class="">Loan R/N</th>
-                                <th class="">Commission</th>
-                                <th class="">Other Amount</th>
+                                <th class="">Booking Date</th>
+                                <th class="">Amount</th>
+                                <th class="">Quantity</th>
                                 <th class="">Previous Cash</th>
                                 <th class="">Notes</th>
                                 <th class="">Actions</th>
@@ -249,41 +195,16 @@
                                     </td>
 
                                     <td class="">
-                                        {{ $row->condition_delivery }}
+                                        {{date('d-M h:i:a', strtotime($row->booking_date)) }}
                                     </td>
 
                                     <td class="">
-                                        {{ $row->condition_advance_payment }}
+                                        {{ $row->amount }}
                                     </td>
 
                                     <td class="">
-                                        {{ $row->tt_delivery }}
+                                        {{ $row->quantity }}
                                     </td>
-
-                                    <td class="">
-                                        {{ $row->dd_delivery }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $row->ho_payment }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $row->advance_rn }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $row->loan_rn }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $row->commission }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $row->other_amount }}
-                                    </td>
-
 
                                     <td class="">
                                         {{ $row->previous_cash }}
@@ -318,15 +239,9 @@
                             <th class="">Tracking ID</th>
                             <th class="">Category</th>
                             <th class="">image</th>
-                            <th class="">CN Delivery</th>
-                            <th class="">CN Advance Payment</th>
-                            <th class="">T.T Delivery</th>
-                            <th class="">D.D Delivery</th>
-                            <th class="">H/O Payment</th>
-                            <th class="">Advance R/N</th>
-                            <th class="">Loan R/N</th>
-                            <th class="">Commission</th>
-                            <th class="">Other Amount</th>
+                            <th class="">Booking Date</th>
+                            <th class="">Amount</th>
+                            <th class="">Quantity</th>
                             <th class="">Previous Cash</th>
                             <th class="">Notes</th>
                             <th class="">Actions</th>

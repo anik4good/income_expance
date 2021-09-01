@@ -17,15 +17,9 @@ class CreateExpansesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id')->nullable()->index();
             $table->bigInteger('tracking_id')->nullable();;
-            $table->integer('condition_delivery')->nullable();
-            $table->integer('condition_advance_payment')->nullable();
-            $table->integer('tt_delivery')->nullable();
-            $table->integer('dd_delivery')->nullable();
-            $table->integer('ho_payment')->nullable();
-            $table->integer('advance_rn')->nullable();
-            $table->integer('loan_rn')->nullable();
-            $table->integer('commission')->nullable();
-            $table->integer('other_amount')->nullable();
+            $table->timestamp('booking_date')->nullable();
+            $table->integer('amount')->nullable();
+            $table->integer('quantity')->nullable();
             $table->integer('previous_cash')->nullable();
             $table->string('notes')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

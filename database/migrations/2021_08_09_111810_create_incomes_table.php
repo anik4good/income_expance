@@ -18,11 +18,13 @@ class CreateIncomesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id')->nullable()->index();
             $table->bigInteger('tracking_id')->nullable();
+            $table->timestamp('booking_date')->nullable();
             $table->integer('condition_amount')->nullable();
             $table->integer('condition_charge')->nullable();
             $table->integer('booking_charge')->nullable();
             $table->integer('labour_charge')->nullable();
             $table->integer('other_amount')->nullable();
+            $table->integer('quantity')->nullable();
             $table->integer('previous_cash')->nullable();
             $table->string('notes')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

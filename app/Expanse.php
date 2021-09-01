@@ -64,4 +64,8 @@ class Expanse extends Model implements HasMedia
 
 
     }
+
+    protected $casts = [
+        'booking_date' => 'datetime',
+    ];
 }

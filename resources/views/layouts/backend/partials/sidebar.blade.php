@@ -69,10 +69,10 @@
                 </div>
 
 
-                <!-- ******************************************************************************************************************************** -->
+                <!-- **************************************Project Menu Started****************************************************************************************** -->
                 <div
                     class="nav-item {{ ($segment1 == 'income') ? 'active open' : '' }} has-sub">
-                    <a href="#"><i class="ik ik-user"></i><span>{{ __('Income')}}</span></a>
+                    <a href="#"><i class="ik ik-user"></i><span>{{ __('Cash in')}}</span></a>
                     <div class="submenu-content">
                     @can('manage_user')
                         <!-- only those have manage_user permission will get access -->
@@ -80,7 +80,7 @@
                                class="menu-item {{ Request::is('income/create')  ? 'active' : '' }}">{{ __('Add')}}</a>
 
                             <a href="{{route('income.index')}}"
-                               class="menu-item {{ Request::is('income')  ? 'active' : '' }}">{{ __('income')}}</a>
+                               class="menu-item {{ Request::is('income')  ? 'active' : '' }}">{{ __('All')}}</a>
                         @endcan
 
                     </div>
@@ -89,7 +89,7 @@
 
                 <div
                     class="nav-item {{ ($segment1 == 'expanse') ? 'active open' : '' }} has-sub">
-                    <a href="#"><i class="ik ik-user"></i><span>{{ __('Expanse')}}</span></a>
+                    <a href="#"><i class="ik ik-user"></i><span>{{ __('Cash out')}}</span></a>
                     <div class="submenu-content">
                     @can('manage_user')
                         <!-- only those have manage_user permission will get access -->
@@ -97,7 +97,7 @@
                                class="menu-item {{ Request::is('expanse/create')  ? 'active' : '' }}">{{ __('Add')}}</a>
 
                             <a href="{{route('expanse.index')}}"
-                               class="menu-item {{ Request::is('expanse')  ? 'active' : '' }}">{{ __('expanse')}}</a>
+                               class="menu-item {{ Request::is('expanse')  ? 'active' : '' }}">{{ __('All')}}</a>
                         @endcan
 
                     </div>

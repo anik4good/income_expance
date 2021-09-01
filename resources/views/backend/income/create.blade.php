@@ -1,5 +1,5 @@
 @extends('layouts.backend.app')
-@section('title','Income')
+@section('title','Cash in')
 @section('content')
 
     <!-- push external head elements to head -->
@@ -24,8 +24,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-award bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Incomes')}}</h5>
-                            <span>{{ __('All Incomes')}}</span>
+                            <h5>{{ __('Cash in')}}</h5>
+                            <span>{{ __('All Cash in')}}</span>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="card table-card">
-                    <div class="card-header"><h3>Add Your Income Today</h3></div>
+                    <div class="card-header"><h3>Add Your Cash in Today</h3></div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('income.store') }}" class="form-horizontal"
                               enctype="multipart/form-data">
@@ -81,6 +81,14 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                         @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="booking_date">Booking Date</label>
+                                        <input type="date" class="form-control" placeholder="Booking Date"
+                                               name="booking_date">
                                     </div>
                                 </div>
 
@@ -122,6 +130,14 @@
                                         <label for="Amounts">Other Amounts</label>
                                         <input type="number" class="form-control" placeholder="Other Amounts"
                                                name="other_amount">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="amount">Quantity</label>
+                                        <input type="number" class="form-control" placeholder="Quantity"
+                                               name="quantity">
                                     </div>
                                 </div>
 
@@ -175,12 +191,14 @@
                                 <th class="">ID</th>
                                 <th class="">Tracking ID</th>
                                 <th class="">Category</th>
+                                <th class="">Booking Date</th>
                                 <th class="">image</th>
                                 <th class="">CN Amount</th>
                                 <th class="">CN Charge</th>
                                 <th class="">Booking Charge</th>
                                 <th class="">Labour Charge</th>
                                 <th class="">Other Amount</th>
+                                <th class="">Quantity</th>
                                 <th class="">Previous Cash</th>
                                 <th class="">Notes</th>
                                 <th class="">Created at</th>
@@ -203,6 +221,10 @@
 
                                     <td class="">
                                         {{ $row->category->name }}
+                                    </td>
+
+                                    <td class="">
+                                        {{date('d-M h:i:a', strtotime($row->booking_date)) }}
                                     </td>
 
 
@@ -232,7 +254,9 @@
                                         {{ $row->other_amount }}
                                     </td>
 
-
+                                    <td class="">
+                                        {{ $row->quantity }}
+                                    </td>
                                     <td class="">
                                         {{ $row->previous_cash }}
                                     </td>
@@ -269,6 +293,7 @@
                             <th class="">ID</th>
                             <th class="">Tracking ID</th>
                             <th class="">Category</th>
+                            <th class="">Booking Date</th>
                             <th class="">image</th>
                             <th class="">CN Amount</th>
                             <th class="">CN Charge</th>

@@ -1,5 +1,5 @@
 @extends('layouts.backend.app')
-@section('title','Expanse')
+@section('title','Cash Out')
 
 
 @section('content')
@@ -23,7 +23,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-award bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Expanse')}}</h5>
+                            <h5>{{ __('Cash out')}}</h5>
                             <span>{{$request->dateFilter}}</span>
                         </div>
                     </div>
@@ -195,15 +195,9 @@
                                 <th class="">ID</th>
                                 <th class="">Tracking ID</th>
                                 <th class="">Category</th>
-                                <th class="">CN Delivery</th>
-                                <th class="">CN Advance Payment</th>
-                                <th class="">T.T Delivery</th>
-                                <th class="">D.D Delivery</th>
-                                <th class="">H/O Payment</th>
-                                <th class="">Advance R/N</th>
-                                <th class="">Loan R/N</th>
-                                <th class="">Commission</th>
-                                <th class="">Other Amount</th>
+                                <th class="">Booking Date</th>
+                                <th class="">Amount</th>
+                                <th class="">Quantity</th>
                                 <th class="">Previous Cash</th>
                                 <th class="">Notes</th>
                                 <th class="">Actions</th>
@@ -228,42 +222,18 @@
                                     </td>
 
                                     <td class="">
-                                        {{ $row->condition_delivery }}
+                                        {{date('d-M h:i:a', strtotime($row->booking_date)) }}
+                                    </td>
+
+
+
+                                    <td class="">
+                                        {{ $row->amount }}
                                     </td>
 
                                     <td class="">
-                                        {{ $row->condition_advance_payment }}
+                                        {{ $row->quantity }}
                                     </td>
-
-                                    <td class="">
-                                        {{ $row->tt_delivery }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $row->dd_delivery }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $row->ho_payment }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $row->advance_rn }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $row->loan_rn }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $row->commission }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $row->other_amount }}
-                                    </td>
-
-
                                     <td class="">
                                         {{ $row->previous_cash }}
                                     </td>
@@ -296,15 +266,8 @@
                             <th class="">ID</th>
                             <th class="">Tracking ID</th>
                             <th class="">Category</th>
-                            <th class="">CN Delivery</th>
-                            <th class="">CN Advance Payment</th>
-                            <th class="">T.T Delivery</th>
-                            <th class="">D.D Delivery</th>
-                            <th class="">H/O Payment</th>
-                            <th class="">Advance R/N</th>
-                            <th class="">Loan R/N</th>
-                            <th class="">Commission</th>
-                            <th class="">Other Amount</th>
+                            <th class="">Amount</th>
+                            <th class="">Quantity</th>
                             <th class="">Previous Cash</th>
                             <th class="">Notes</th>
                             <th class="">Actions</th>

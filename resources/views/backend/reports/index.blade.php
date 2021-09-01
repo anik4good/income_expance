@@ -113,7 +113,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-block">
-                        <h5> {{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Income Expanse Summary</h5>
+                        <h5> {{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Cash in Expanse Summary</h5>
 
                     </div>
 
@@ -122,8 +122,8 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th class="">Total Income</th>
-                                    <th class="">Total Expanse</th>
+                                    <th class="">Total Cash in</th>
+                                    <th class="">Total Cash out</th>
                                     <th class="">Cash</th>
                                     <th class="">Previous Cash</th>
                                 </tr>
@@ -164,7 +164,7 @@
             <div class="col-md-12">
                 <div class="card table-card">
                     <div class="card-header d-block bg-green">
-                        <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Income Summary</h3>
+                        <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Cash in Summary</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered">
@@ -226,7 +226,7 @@
         <div class="col-md-12">
             <div class="card table-card">
                 <div class="card-header d-block bg-warning">
-                    <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Expanse Summary</h3>
+                    <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Cash out Summary</h3>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered">
@@ -235,18 +235,9 @@
                             <th class="">ID</th>
                             <th class="">Tracking ID</th>
                             <th class="">Category</th>
-                            <th class="">{{ $expanses->sum('condition_delivery') }}</th>
-                            <th class="">CN Advance Payment</th>
-                            <th class="">T.T Delivery</th>
-                            <th class="">D.D Delivery</th>
-                            <th class="">H/O Payment</th>
-                            <th class="">Advance R/N</th>
-                            <th class="">Loan R/N</th>
-                            <th class="">Commission</th>
-                            <th class="">Other Amount</th>
+                            <th class="">Amount</th>
+                            <th class="">Quantity</th>
                             <th class="">Previous Cash</th>
-                            <th class="">Notes</th>
-                            <th class="">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -257,18 +248,9 @@
                         <th class="">ID</th>
                         <th class="">Tracking ID</th>
                         <th class="">Category</th>
-                        <th class="">CN Delivery</th>
-                        <th class="">CN Advance Payment</th>
-                        <th class="">T.T Delivery</th>
-                        <th class="">D.D Delivery</th>
-                        <th class="">H/O Payment</th>
-                        <th class="">Advance R/N</th>
-                        <th class="">Loan R/N</th>
-                        <th class="">Commission</th>
-                        <th class="">Other Amount</th>
+                        <th class="">Amount</th>
+                        <th class="">Quantity</th>
                         <th class="">Previous Cash</th>
-                        <th class="">Notes</th>
-                        <th class="">Actions</th>
                         </tfoot>
                     </table>
                 </div>

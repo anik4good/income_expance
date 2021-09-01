@@ -87,4 +87,10 @@
         }
 
 
+
+        protected $casts = [
+            'booking_date' => 'datetime',
+        ];
+
+
     }
