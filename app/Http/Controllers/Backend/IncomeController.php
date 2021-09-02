@@ -43,8 +43,7 @@
                     }
 
 
-
-                   else if ( $request->dateFilter == 'today' )
+                    elseif ( $request->dateFilter == 'today' )
                     {
 
                         $today = Carbon::now();
@@ -126,14 +125,14 @@
 //            });
 
 
-            if ($request->dateFilter)
+            if ( $request->dateFilter )
             {
                 $previousCash = previousCash($request->dateFilter);
                 $request->dateFilter = empty($request->dateFilter) ? 'Today' : $request->dateFilter;
             }
 
 
-            if ($request->custom_date)
+            if ( $request->custom_date )
             {
                 $previousCash = previousCash($request->dateFilter);
                 $request->custom_date = empty($request->custom_date) ? 'Today' : $request->custom_date;
@@ -185,15 +184,24 @@
 
             // insert Income
             $validator = Validator::make($request->all(), [
-                'tracking_id' => 'required|numeric',
-                'condition_amount' => 'numeric',
-                'condition_charge' => 'numeric',
-                'booking_charge' => 'numeric',
-                'labour_charge' => 'numeric',
-                'other_amount' => 'numeric',
+
+
+                'condition_amount' => 'numeric|nullable',
+                'condition_charge' => 'numeric|nullable',
+                'booking_charge' => 'numeric|nullable',
+                'labour_charge' => 'numeric|nullable',
+                'other_amount' => 'numeric|nullable',
                 'receipt' => 'nullable|image',
-                'notes' => 'string|max:255',
+                'notes' => 'nullable|string|max:255',
             ]);
+
+
+            if ( $request->income_category == 1 || $request->income_category == 2 || $request->income_category == 3 )
+            {
+                $this->validate($request, [
+                    'tracking_id' => 'required|numeric',
+                ]);
+            }
 
             if ( $validator->fails() )
             {

@@ -14,6 +14,8 @@
         <!--Dropify css-->
         <link rel="stylesheet" href="{{ asset('assets/backend/plugins/dropify/css/dropify.min.css') }}">
 
+
+
     @endpush
 
 
@@ -60,7 +62,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="exampleInputUsername1">Select Category</label>
-                                        <select type="select" id="exampleCustomSelect" name="income_category"
+                                        <select type="select" id="income_category" name="income_category"
                                                 class="custom-select">
                                             @foreach($categories as $row)
                                                 <option value="{{$row->id}}">{{$row->name}}</option>
@@ -93,6 +95,14 @@
                                 </div>
 
                                 <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="amount">Quantity</label>
+                                        <input type="number" class="form-control" placeholder="Quantity"
+                                               name="quantity">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2" id="for_condition">
                                     <div class="form-group">
                                         <label for="Conditionamount">Condition Amount</label>
                                         <input type="number" class="form-control" placeholder="Condition Amount"
@@ -133,13 +143,6 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="amount">Quantity</label>
-                                        <input type="number" class="form-control" placeholder="Quantity"
-                                               name="quantity">
-                                    </div>
-                                </div>
 
                                 <div class="col-md-2">
                                     <div class="form-group">
@@ -172,7 +175,8 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-info btn-block"><i class="ik ik-clipboard"></i>Submit</button>
+                            <button type="submit" class="btn btn-info btn-block"><i class="ik ik-clipboard"></i>Submit
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -312,8 +316,59 @@
     </div>
 
 
+    <select id="myselection">
+        <option>Select Option</option>
+        <option value="One">One</option>
+        <option value="Two">Two</option>
+        <option value="Three">Three</option>
+    </select>
+    <div id="showOne" class="myDiv">
+        You have selected option <strong>"One"</strong>.
+    </div>
+    <div id="showTwo" class="myDiv">
+        You have selected option <strong>"Two"</strong>.
+    </div>
+    <div id="showThree" class="myDiv">
+        You have selected option <strong>"Three"</strong>.
+    </div>
 
     @push('script')
+        {{--        <script type="text/javascript">--}}
+
+        {{--            $('document').ready(function () {--}}
+        {{--                //  $("#for_condition").hide();--}}
+        {{--                $("#income_category").change(function () {--}}
+        {{--                    var data = $(this).val();--}}
+        {{--                    if (data === 1) {--}}
+        {{--                        $('#for_condition').show();--}}
+        {{--                    } else {--}}
+
+        {{--                        $('#for_condition').hide();--}}
+
+        {{--                    }--}}
+        {{--                });--}}
+        {{--            }).trigger("change.for_condition");--}}
+        {{--        </script>--}}
+
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#for_condition').hide();
+                        $('#income_category').on('change', function () {
+                            var demovalue = $(this).val();
+                            if (demovalue === 1) {
+                                $('#for_condition').show();
+                            } else {
+
+                                $('#for_condition').hide();
+
+                            }
+
+                        });
+                    });
+                </script>
+
+
+
 
         <script src="{{ asset('assets/backend/plugins/DataTables/datatables.min.js') }}"></script>
         <script src="{{ asset('assets/backend/js/datatables.js') }}"></script>
@@ -334,6 +389,11 @@
 
         {{--    sweet alert--}}
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
+
+
+
+
+
 
 
     @endpush

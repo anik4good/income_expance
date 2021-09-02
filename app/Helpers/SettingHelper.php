@@ -39,7 +39,6 @@
                     }
 
 
-
                     elseif ( $request == 'thisweek' )
                     {
 
@@ -98,10 +97,10 @@
                 ->get();
 
 
-
             $expanses = Expanse::with('category')
                 ->orderByDesc('created_at')
                 ->where(function ($q) use ($request) {
+
 
                     if ( $request == 'today' )
                     {
@@ -119,7 +118,6 @@
                         $q->whereBetween('created_at', [$yesterday->startOfDay()->format('Y-m-d H:i:s'), $yesterday->endOfDay()->format('Y-m-d H:i:s')]);
 
                     }
-
 
 
                     elseif ( $request == 'thisweek' )
@@ -184,7 +182,52 @@
 
             $total_expanse = $expanses->sum('amount');
 
-            return $total_income-$total_expanse;
+            return $total_income - $total_expanse;
+        }
+
+
+        function previousCashWithCustomDate($request)
+        {
+            $incomes = Income::with('category')
+                ->orderByDesc('created_at')
+                ->where(function ($q) use ($request) {
+
+                    if ( $request )
+                    {
+
+                        $old_date = $request;
+                        $date = Carbon::createFromFormat('Y-m-d', $old_date)->subDays(1);
+                        $q->whereBetween('created_at', [$date->startOfDay()->format('Y-m-d H:i:s'), $date->endOfDay()->format('Y-m-d H:i:s')]);
+
+                    }
+
+                })
+                ->get();
+
+
+            $expanses = Expanse::with('category')
+                ->orderByDesc('created_at')
+                ->where(function ($q) use ($request) {
+
+
+                    if ( $request )
+                    {
+
+                        $old_date = $request;
+                        $date = Carbon::createFromFormat('Y-m-d', $old_date)->subDays(1);;
+                        $q->whereBetween('created_at', [$date->startOfDay()->format('Y-m-d H:i:s'), $date->endOfDay()->format('Y-m-d H:i:s')]);
+
+                    }
+
+                })
+                ->get();
+
+
+            $total_income = $incomes->sum('condition_amount') + $incomes->sum('condition_charge') + $incomes->sum('booking_charge') + $incomes->sum('labour_charge') + $incomes->sum('other_amount');
+
+            $total_expanse = $expanses->sum('amount');
+
+            return $total_income - $total_expanse;
         }
 
     }
