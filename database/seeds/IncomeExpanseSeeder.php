@@ -140,7 +140,7 @@
 
                 Income::insert([
                     'category_id' => rand(1, 7),
-                    'tracking_id' => rand(5000, 6000),
+                    'tracking_id' => $faker->unique()->numberBetween($min = 10000, $max = 50000),
                     'booking_date' =>  $faker->dateTimeBetween('-120 days', now()),
                     'condition_amount' => rand(1, 100),
                     'condition_charge' => rand(1, 100),
@@ -157,7 +157,7 @@
 
                 Expanse::insert([
                     'category_id' => rand(8, 16),
-                    'tracking_id' => rand(5000, 6000),
+                    'tracking_id' => $faker->unique()->numberBetween($min = 51000, $max = 99999),
                     'booking_date' =>  $faker->dateTimeBetween('-120 days', now()),
                     'amount' => rand(1, 100),
                     'quantity' => rand(1, 100),

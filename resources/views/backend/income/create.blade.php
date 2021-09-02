@@ -135,13 +135,16 @@
                                 </div>
                             </div>
                             <div class="row">
+
                                 <div class="col-md-2">
+
                                     <div class="form-group">
                                         <label for="Amounts">Other Amounts</label>
                                         <input type="number" class="form-control" placeholder="Other Amounts"
                                                name="other_amount">
                                     </div>
                                 </div>
+
 
 
                                 <div class="col-md-2">
@@ -316,59 +319,11 @@
     </div>
 
 
-    <select id="myselection">
-        <option>Select Option</option>
-        <option value="One">One</option>
-        <option value="Two">Two</option>
-        <option value="Three">Three</option>
-    </select>
-    <div id="showOne" class="myDiv">
-        You have selected option <strong>"One"</strong>.
-    </div>
-    <div id="showTwo" class="myDiv">
-        You have selected option <strong>"Two"</strong>.
-    </div>
-    <div id="showThree" class="myDiv">
-        You have selected option <strong>"Three"</strong>.
-    </div>
 
-    @push('script')
-        {{--        <script type="text/javascript">--}}
-
-        {{--            $('document').ready(function () {--}}
-        {{--                //  $("#for_condition").hide();--}}
-        {{--                $("#income_category").change(function () {--}}
-        {{--                    var data = $(this).val();--}}
-        {{--                    if (data === 1) {--}}
-        {{--                        $('#for_condition').show();--}}
-        {{--                    } else {--}}
-
-        {{--                        $('#for_condition').hide();--}}
-
-        {{--                    }--}}
-        {{--                });--}}
-        {{--            }).trigger("change.for_condition");--}}
-        {{--        </script>--}}
-
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $('#for_condition').hide();
-                        $('#income_category').on('change', function () {
-                            var demovalue = $(this).val();
-                            if (demovalue === 1) {
-                                $('#for_condition').show();
-                            } else {
-
-                                $('#for_condition').hide();
-
-                            }
-
-                        });
-                    });
-                </script>
 
 
 
+    @push('script')
 
         <script src="{{ asset('assets/backend/plugins/DataTables/datatables.min.js') }}"></script>
         <script src="{{ asset('assets/backend/js/datatables.js') }}"></script>

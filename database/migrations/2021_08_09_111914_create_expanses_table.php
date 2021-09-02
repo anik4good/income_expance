@@ -16,7 +16,7 @@ class CreateExpansesTable extends Migration
         Schema::create('expanses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id')->nullable()->index();
-            $table->bigInteger('tracking_id')->nullable();;
+            $table->bigInteger('tracking_id')->unique()->nullable();;
             $table->timestamp('booking_date')->nullable();
             $table->integer('amount')->nullable();
             $table->integer('quantity')->nullable();

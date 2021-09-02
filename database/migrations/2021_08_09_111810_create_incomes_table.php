@@ -17,7 +17,7 @@ class CreateIncomesTable extends Migration
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id')->nullable()->index();
-            $table->bigInteger('tracking_id')->nullable();
+            $table->bigInteger('tracking_id')->unique()->nullable();
             $table->timestamp('booking_date')->nullable();
             $table->integer('condition_amount')->nullable();
             $table->integer('condition_charge')->nullable();

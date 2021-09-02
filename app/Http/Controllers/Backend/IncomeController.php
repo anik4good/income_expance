@@ -201,6 +201,14 @@
                 $this->validate($request, [
                     'tracking_id' => 'required|numeric',
                 ]);
+
+                $request->other_amount=0;
+
+            }
+
+            else
+            {
+                $request->tracking_id=null;
             }
 
             if ( $validator->fails() )
@@ -225,7 +233,6 @@
                     'labour_charge' => $request->labour_charge,
                     'other_amount' => $request->other_amount,
                     'quantity' => $request->quantity,
-                    'total_amount' => $request->total_amount,
                     'notes' => $request->notes,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
