@@ -103,12 +103,15 @@ class ExpanseController extends Controller
             //  ->take(100)
             ->get();
 
-
+        $total_expanse = $expanses->sum('total');
 //            $expanses = Cache::remember('expanse-all', 60 * 60 * 24, function () use ($value) {
 //                return $value;
 //        });
 
-        //   return $expanses;
+
+
+
+
 
         $request->dateFilter = empty($request->dateFilter) ? 'Today' : $request->dateFilter;
 

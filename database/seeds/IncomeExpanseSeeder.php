@@ -148,7 +148,7 @@
                     'labour_charge' => rand(1, 100),
                     'other_amount' => rand(1, 100),
                     'quantity' => rand(1, 100),
-                    'previous_cash' => rand(1, 100),
+                   // 'previous_cash' => rand(1, 100),
                     'notes' => $faker->name(),
                     'created_at' => $faker->dateTimeBetween('-120 days', now()),
                     'updated_at' => $faker->dateTimeBetween('-10 days', now())
@@ -161,7 +161,7 @@
                     'booking_date' =>  $faker->dateTimeBetween('-120 days', now()),
                     'amount' => rand(1, 100),
                     'quantity' => rand(1, 100),
-                    'previous_cash' => rand(1, 100),
+                  //  'previous_cash' => rand(1, 100),
                     'notes' => $faker->name(),
                     'created_at' => $faker->dateTimeBetween('-120 days', now()),
                     'updated_at' => $faker->dateTimeBetween('-10 days', now())

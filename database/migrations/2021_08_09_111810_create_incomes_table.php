@@ -25,7 +25,7 @@ class CreateIncomesTable extends Migration
             $table->integer('labour_charge')->nullable();
             $table->integer('other_amount')->nullable();
             $table->integer('quantity')->nullable();
-            $table->integer('previous_cash')->nullable();
+         //   $table->integer('previous_cash')->nullable();
             $table->string('notes')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

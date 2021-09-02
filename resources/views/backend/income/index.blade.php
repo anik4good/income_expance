@@ -200,7 +200,7 @@
                                  <th class="">Booking Charge</th>
                                  <th class="">Labour Charge</th>
                                  <th class="">Other Amount</th>
-                                 <th class="">Previous Cash</th>
+{{--                                 <th class="">Previous Cash</th>--}}
                                  <th class="">Notes</th>
                                  <th class="">Created at</th>
                                  <th class="">Actions</th>
@@ -249,9 +249,9 @@
                                      </td>
 
 
-                                     <td class="">
-                                         {{ $row->previous_cash }}
-                                     </td>
+{{--                                     <td class="">--}}
+{{--                                         {{ $row->previous_cash }}--}}
+{{--                                     </td>--}}
 
                                      <td class="">
                                          {{ $row->notes }}
@@ -291,7 +291,7 @@
                              <th class="">Booking Charge</th>
                              <th class="">Labour Charge</th>
                              <th class="">Other Amount</th>
-                             <th class="">Previous Cash</th>
+{{--                             <th class="">Previous Cash</th>--}}
                              <th class="">Notes</th>
                              <th class="">Created at</th>
                              <th class="">Actions</th>
@@ -349,6 +349,9 @@
 {{--                });--}}
 {{--            });--}}
 {{--        </script>--}}
+
+        {{--    sweet alert--}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
     @endpush
 
 

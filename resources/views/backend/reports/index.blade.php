@@ -113,7 +113,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-block">
-                        <h5> {{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Cash in Expanse Summary</h5>
+                        <h5> {{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Cash IN OUT Summary</h5>
 
                     </div>
 
@@ -170,24 +170,30 @@
                         <table class="table table-hover table-bordered">
                             <thead>
                             <tr>
-                                <th class="">ID</th>
                                 <th class="">Tracking ID</th>
-                                <th class="">Category</th>
-                                <th class="">CN Amount</th>
-                                <th class="">CN Charge</th>
+                                <th class="">Quantity</th>
+                                <th class="">Condition Amount</th>
+                                <th class="">Condition Charge</th>
                                 <th class="">Booking Charge</th>
                                 <th class="">Labour Charge</th>
                                 <th class="">Other Amount</th>
-                                <th class="">Previous Cash</th>
-                                <th class="">Notes</th>
-                                <th class="">Created at</th>
-                                <th class="">Actions</th>
+                                <th class="">Total</th>
                             </tr>
                             </thead>
                             <tbody>
 
                             </tbody>
                             <tfoot>
+                            <th class="">
+                                {{ $incomes->count('tracking_id') }}
+                            </th>
+
+
+                            <th class="">
+                                {{ $incomes->sum('quantity') }}
+                            </th>
+
+
                             <th class="">
                                 {{ $incomes->sum('condition_amount') }}
                             </th>
@@ -202,6 +208,7 @@
                             <th class="">
                                 {{ $incomes->sum('labour_charge') }}
                             </th>
+
                             <th class="">
                                 {{ $incomes->sum('other_amount') }}
                             </th>
@@ -216,48 +223,57 @@
             </div>
 
         </div>
-    </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card table-card">
+                    <div class="card-header d-block bg-warning">
+                        <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Cash out Summary</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="">Tracking ID</th>
+                                <th class="">Quantity</th>
+                                <th class="">Total Amount</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <th class="">
+                                {{ $expanses->count('tracking_id') }}
+                            </th>
 
 
+                            <th class="">
+                                {{ $expanses->sum('quantity') }}
+                            </th>
+
+                            <th class="">
+                                {{ $expanses->sum('amount') }}
+                            </th>
 
 
+                            </tbody>
+                            <tfoot>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card table-card">
-                <div class="card-header d-block bg-warning">
-                    <h3>{{ empty($request->custom_date) ? $request->dateFilter.'s' : $request->custom_date}} Cash out Summary</h3>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover table-bordered">
-                        <thead>
-                        <tr>
-                            <th class="">ID</th>
-                            <th class="">Tracking ID</th>
-                            <th class="">Category</th>
-                            <th class="">Amount</th>
-                            <th class="">Quantity</th>
-                            <th class="">Previous Cash</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-
-                        </tbody>
-                        <tfoot>
-                        <th class="">ID</th>
-                        <th class="">Tracking ID</th>
-                        <th class="">Category</th>
-                        <th class="">Amount</th>
-                        <th class="">Quantity</th>
-                        <th class="">Previous Cash</th>
-                        </tfoot>
-                    </table>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
             </div>
+
         </div>
 
+
     </div>
+
+
+
+
+
+
 
     <!-- push external js -->
     @push('script')

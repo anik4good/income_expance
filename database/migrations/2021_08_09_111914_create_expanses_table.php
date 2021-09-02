@@ -20,7 +20,7 @@ class CreateExpansesTable extends Migration
             $table->timestamp('booking_date')->nullable();
             $table->integer('amount')->nullable();
             $table->integer('quantity')->nullable();
-            $table->integer('previous_cash')->nullable();
+          //  $table->integer('previous_cash')->nullable();
             $table->string('notes')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

@@ -124,6 +124,17 @@
                 })
                 ->where(function ($q) use ($request) {
 
+                    if ( $request->custom_date )
+                    {
+
+                        $old_date = $request->custom_date;
+                        $date = Carbon::createFromFormat('Y-m-d', $old_date);
+                        $q->whereBetween('created_at', [$date->startOfDay()->format('Y-m-d H:i:s'), $date->endOfDay()->format('Y-m-d H:i:s')]);
+
+                    }
+
+
+
                     if ( $request->dateFilter == 'today' )
                     {
 
@@ -198,13 +209,17 @@
                 ->get();
 
             $total_income = $incomes->sum('condition_amount') + $incomes->sum('condition_charge') + $incomes->sum('booking_charge') + $incomes->sum('labour_charge') + $incomes->sum('other_amount');
-            $total_expanse = $expanses->sum('condition_delivery') + $expanses->sum('condition_advance_payment') + $expanses->sum('tt_delivery') + $expanses->sum('dd_delivery') + $expanses->sum('ho_payment');
+
+            $total_expanse = $expanses->sum('amount');
+
+        //   return $total_expanse;
+                //+ $expanses->sum('condition_advance_payment') + $expanses->sum('tt_delivery') + $expanses->sum('dd_delivery') + $expanses->sum('ho_payment');
             $cash = $total_income - $total_expanse;
 
 
 
 
-$previousCash =0;
+            $previousCash =0;
             if ($request->dateFilter)
             {
                 $previousCash = previousCash($request->dateFilter);
@@ -212,9 +227,9 @@ $previousCash =0;
             }
 
 
-            if ($request->custom_date)
+           else  if ($request->custom_date)
             {
-                $previousCash = previousCash($request->dateFilter);
+                $previousCash = previousCash($request->custom_date);
                 $request->custom_date = empty($request->custom_date) ? 'Today' : $request->custom_date;
             }
 

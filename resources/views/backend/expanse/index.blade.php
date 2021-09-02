@@ -132,11 +132,7 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th class="">Condition Amount</th>
-                                    <th class="">Condition Charge</th>
-                                    <th class="">Booking Charge</th>
-                                    <th class="">Labour Charge</th>
-                                    <th class="">Other Amount</th>
+
                                     <th class="">Total</th>
                                 </tr>
                                 </thead>
@@ -144,26 +140,9 @@
 
                                 <tr>
 
-                                    <td class="">
-                                        {{ $expanses->sum('condition_delivery') }}
-                                    </td>
 
                                     <td class="">
-                                        {{ $expanses->sum('condition_advance_payment') }}
-                                    </td>
-                                    <td class="">
-                                        {{ $expanses->sum('tt_delivery') }}
-                                    </td>
-
-                                    <td class="">
-                                        {{ $expanses->sum('dd_delivery') }}
-                                    </td>
-                                    <td class="">
-                                        {{ $expanses->sum('ho_payment') }}
-                                    </td>
-
-                                    <td class="">
-
+                                        {{ $expanses->sum('amount') }}
 
                                     </td>
 
@@ -198,7 +177,7 @@
                                 <th class="">Booking Date</th>
                                 <th class="">Amount</th>
                                 <th class="">Quantity</th>
-                                <th class="">Previous Cash</th>
+{{--                                <th class="">Previous Cash</th>--}}
                                 <th class="">Notes</th>
                                 <th class="">Actions</th>
                             </tr>
@@ -234,9 +213,9 @@
                                     <td class="">
                                         {{ $row->quantity }}
                                     </td>
-                                    <td class="">
-                                        {{ $row->previous_cash }}
-                                    </td>
+{{--                                    <td class="">--}}
+{{--                                        {{ $row->previous_cash }}--}}
+{{--                                    </td>--}}
 
                                     <td class="">
                                         {{ $row->notes }}
@@ -266,9 +245,10 @@
                             <th class="">ID</th>
                             <th class="">Tracking ID</th>
                             <th class="">Category</th>
+                            <th class="">Booking Date</th>
                             <th class="">Amount</th>
                             <th class="">Quantity</th>
-                            <th class="">Previous Cash</th>
+                            {{--                                <th class="">Previous Cash</th>--}}
                             <th class="">Notes</th>
                             <th class="">Actions</th>
                             </tfoot>
@@ -296,35 +276,8 @@
 
 
 
-        {{--        <script type="text/javascript">--}}
-        {{--            // Foods data table--}}
-        {{--            $(function () {--}}
-
-        {{--                'use strict';--}}
-
-        {{--                var dTable = $('#expanse_table').DataTable({--}}
-        {{--                    order: [],--}}
-        {{--                    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],--}}
-        {{--                    processing: true,--}}
-        {{--                    responsive: false,--}}
-        {{--                    serverSide: true,--}}
-        {{--                    language: {--}}
-        {{--                        processing: '<i class="ace-icon fa fa-spinner fa-spin orange bigger-500" style="font-size:60px;margin-top:50px;"></i>'--}}
-        {{--                    },--}}
-        {{--                    scroller: {--}}
-        {{--                        loadingIndicator: false--}}
-        {{--                    },--}}
-        {{--                    pagingType: "full_numbers",--}}
-        {{--                    dom: "<'row'<'col-sm-2'l><'col-sm-7 text-center'B><'col-sm-3'f>>tipr",--}}
-        {{--                    ajax: "{{ route('expanses.datatable.get') }}",--}}
-        {{--                    columns: [--}}
-        {{--                        {data: 'tracking_id', name: 'tracking_id'},--}}
-
-        {{--                    ],--}}
-
-        {{--                });--}}
-        {{--            });--}}
-        {{--        </script>--}}
+        {{--    sweet alert--}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.0/dist/sweetalert2.all.min.js"></script>
     @endpush
 
 

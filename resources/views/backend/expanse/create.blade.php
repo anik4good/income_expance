@@ -163,7 +163,7 @@
                                 <th class="">Booking Date</th>
                                 <th class="">Amount</th>
                                 <th class="">Quantity</th>
-                                <th class="">Previous Cash</th>
+{{--                                <th class="">Previous Cash</th>--}}
                                 <th class="">Notes</th>
                                 <th class="">Actions</th>
                             </tr>
@@ -206,9 +206,9 @@
                                         {{ $row->quantity }}
                                     </td>
 
-                                    <td class="">
-                                        {{ $row->previous_cash }}
-                                    </td>
+{{--                                    <td class="">--}}
+{{--                                        {{ $row->previous_cash }}--}}
+{{--                                    </td>--}}
 
                                     <td class="">
                                         {{ $row->notes }}
@@ -242,7 +242,7 @@
                             <th class="">Booking Date</th>
                             <th class="">Amount</th>
                             <th class="">Quantity</th>
-                            <th class="">Previous Cash</th>
+{{--                            <th class="">Previous Cash</th>--}}
                             <th class="">Notes</th>
                             <th class="">Actions</th>
                             </tfoot>

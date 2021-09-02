@@ -199,7 +199,6 @@
                                 <th class="">Labour Charge</th>
                                 <th class="">Other Amount</th>
                                 <th class="">Quantity</th>
-                                <th class="">Previous Cash</th>
                                 <th class="">Notes</th>
                                 <th class="">Created at</th>
                                 <th class="">Actions</th>
@@ -256,9 +255,6 @@
 
                                     <td class="">
                                         {{ $row->quantity }}
-                                    </td>
-                                    <td class="">
-                                        {{ $row->previous_cash }}
                                     </td>
 
                                     <td class="">
