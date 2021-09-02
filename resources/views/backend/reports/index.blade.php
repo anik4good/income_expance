@@ -124,7 +124,7 @@
                                 <tr>
                                     <th class="">Total Cash in</th>
                                     <th class="">Total Cash out</th>
-                                    <th class="">Cash</th>
+                                    <th class="">Final Cash</th>
                                     <th class="">Previous Cash</th>
                                 </tr>
                                 </thead>

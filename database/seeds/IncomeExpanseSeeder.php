@@ -141,7 +141,7 @@
                 Income::insert([
                     'category_id' => rand(1, 7),
                     'tracking_id' => $faker->unique()->numberBetween($min = 10000, $max = 50000),
-                    'booking_date' =>  $faker->dateTimeBetween('-120 days', now()),
+                    'booking_date' =>  $faker->dateTimeBetween('-90 days', now()),
                     'condition_amount' => rand(1, 100),
                     'condition_charge' => rand(1, 100),
                     'booking_charge' => rand(1, 100),
@@ -150,7 +150,7 @@
                     'quantity' => rand(1, 100),
                    // 'previous_cash' => rand(1, 100),
                     'notes' => $faker->name(),
-                    'created_at' => $faker->dateTimeBetween('-120 days', now()),
+                    'created_at' => $faker->dateTimeBetween('-90 days', now()),
                     'updated_at' => $faker->dateTimeBetween('-10 days', now())
                 ]);
 
@@ -158,12 +158,12 @@
                 Expanse::insert([
                     'category_id' => rand(8, 16),
                     'tracking_id' => $faker->unique()->numberBetween($min = 51000, $max = 99999),
-                    'booking_date' =>  $faker->dateTimeBetween('-120 days', now()),
+                    'booking_date' =>  $faker->dateTimeBetween('-90 days', now()),
                     'amount' => rand(1, 100),
                     'quantity' => rand(1, 100),
                   //  'previous_cash' => rand(1, 100),
                     'notes' => $faker->name(),
-                    'created_at' => $faker->dateTimeBetween('-120 days', now()),
+                    'created_at' => $faker->dateTimeBetween('-90 days', now()),
                     'updated_at' => $faker->dateTimeBetween('-10 days', now())
                 ]);
 

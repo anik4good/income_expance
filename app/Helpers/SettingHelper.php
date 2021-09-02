@@ -23,9 +23,9 @@
 
                     if ( $request == 'today' )
                     {
-
-                        $yesterday = Carbon::now()->subDays(1);
-                        $q->whereBetween('created_at', [$yesterday->startOfDay()->format('Y-m-d H:i:s'), $yesterday->endOfDay()->format('Y-m-d H:i:s')]);
+                        $start_date = Carbon::now()->subDays(365);
+                        $today = Carbon::now();
+                        $q->whereBetween('created_at', [$start_date->startOfDay()->format('Y-m-d H:i:s'), $today->startOfDay()->format('Y-m-d H:i:s')]);
 
                     }
 
@@ -33,8 +33,9 @@
                     elseif ( $request == 'yesterday' )
                     {
 
-                        $yesterday = Carbon::now()->subDays(2);
-                        $q->whereBetween('created_at', [$yesterday->startOfDay()->format('Y-m-d H:i:s'), $yesterday->endOfDay()->format('Y-m-d H:i:s')]);
+                        $start_date = Carbon::now()->subDays(365);
+                        $yesterday = Carbon::now()->subDays(1);
+                        $q->whereBetween('created_at', [$start_date->startOfDay()->format('Y-m-d H:i:s'), $yesterday->startOfDay()->format('Y-m-d H:i:s')]);
 
                     }
 
@@ -56,11 +57,11 @@
                     }
                     elseif ( $request == '10days' )
                     {
+                        $start_date = Carbon::now()->subDays(365)->startOfDay()->format('Y-m-d H:i:s');
 
-                        $start = Carbon::now()->subDays(10)->startOfDay()->format('Y-m-d H:i:s');
-                        $end = Carbon::now()->format('Y-m-d H:i:s');
-                        $q->whereBetween('created_at', [$start, $end]);
+                        $start = Carbon::now()->subDays(10)->endOfDay()->format('Y-m-d H:i:s');
 
+                        $q->whereBetween('created_at', [$start_date, $start]);
 
                     }
 
@@ -104,9 +105,9 @@
 
                     if ( $request == 'today' )
                     {
-
-                        $yesterday = Carbon::now()->subDays(1);
-                        $q->whereBetween('created_at', [$yesterday->startOfDay()->format('Y-m-d H:i:s'), $yesterday->endOfDay()->format('Y-m-d H:i:s')]);
+                        $start_date = Carbon::now()->subDays(365);
+                        $today = Carbon::now();
+                        $q->whereBetween('created_at', [$start_date->startOfDay()->format('Y-m-d H:i:s'), $today->startOfDay()->format('Y-m-d H:i:s')]);
 
                     }
 
@@ -114,8 +115,9 @@
                     elseif ( $request == 'yesterday' )
                     {
 
-                        $yesterday = Carbon::now()->subDays(2);
-                        $q->whereBetween('created_at', [$yesterday->startOfDay()->format('Y-m-d H:i:s'), $yesterday->endOfDay()->format('Y-m-d H:i:s')]);
+                        $start_date = Carbon::now()->subDays(365);
+                        $yesterday = Carbon::now()->subDays(1);
+                        $q->whereBetween('created_at', [$start_date->startOfDay()->format('Y-m-d H:i:s'), $yesterday->startOfDay()->format('Y-m-d H:i:s')]);
 
                     }
 
@@ -137,10 +139,12 @@
                     }
                     elseif ( $request == '10days' )
                     {
+                        $start_date = Carbon::now()->subDays(365)->startOfDay()->format('Y-m-d H:i:s');
 
-                        $start = Carbon::now()->subDays(10)->startOfDay()->format('Y-m-d H:i:s');
-                        $end = Carbon::now()->format('Y-m-d H:i:s');
-                        $q->whereBetween('created_at', [$start, $end]);
+                        $start = Carbon::now()->subDays(10)->endOfDay()->format('Y-m-d H:i:s');
+
+
+                        $q->whereBetween('created_at', [$start_date, $start]);
 
 
                     }
@@ -194,11 +198,11 @@
 
                     if ( $request )
                     {
-
+                        $start_date = Carbon::now()->subDays(365)->startOfDay()->format('Y-m-d H:i:s');
                         $old_date = $request;
-                        $date = Carbon::createFromFormat('Y-m-d', $old_date)->subDays(1);
-                        $q->whereBetween('created_at', [$date->startOfDay()->format('Y-m-d H:i:s'), $date->endOfDay()->format('Y-m-d H:i:s')]);
+                        $date = Carbon::createFromFormat('Y-m-d', $old_date)->subDays()->endOfDay()->format('Y-m-d H:i:s');
 
+                        $q->whereBetween('created_at', [$start_date, $date]);
                     }
 
                 })
@@ -212,10 +216,10 @@
 
                     if ( $request )
                     {
-
+                        $start_date = Carbon::now()->subDays(365)->startOfDay()->format('Y-m-d H:i:s');
                         $old_date = $request;
-                        $date = Carbon::createFromFormat('Y-m-d', $old_date)->subDays(1);;
-                        $q->whereBetween('created_at', [$date->startOfDay()->format('Y-m-d H:i:s'), $date->endOfDay()->format('Y-m-d H:i:s')]);
+                        $date = Carbon::createFromFormat('Y-m-d', $old_date)->subDays()->endOfDay()->format('Y-m-d H:i:s');
+                        $q->whereBetween('created_at', [$start_date, $date]);
 
                     }
 

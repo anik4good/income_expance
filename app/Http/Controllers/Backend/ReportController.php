@@ -215,8 +215,13 @@
             //+ $expanses->sum('condition_advance_payment') + $expanses->sum('tt_delivery') + $expanses->sum('dd_delivery') + $expanses->sum('ho_payment');
             $cash = $total_income - $total_expanse;
 
+           $previousCash = 0;
+//            $previousCash = Income::where('created_at', '!=' ,Carbon::now())->sum('condition_amount','condition_charge','booking_charge','labour_charge','other_amount')
+//                - Expanse::where('created_at', '!=' ,Carbon::now())->sum('amount');
 
-            $previousCash = 0;
+
+
+
 
             if ( !empty($request->dateFilter) )
             {
