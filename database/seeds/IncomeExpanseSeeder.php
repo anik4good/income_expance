@@ -132,15 +132,15 @@
 
 
             DB::table('categories')->insert($categories);
-            for ( $i = 0; $i < 1000; $i++ )
+            for ( $i = 0; $i < 5000; $i++ )
             {
 //                $yesterday = Carbon::now()->subDay();
 //                $previous_cash = Income::whereBetween('created_at', [$yesterday->startOfDay()->format('Y-m-d H:i:s'), $yesterday->endOfDay()->format('Y-m-d H:i:s')])->sum('condition_amount');
 //                $yesterday = $previous_cash->created_at->subDay();
 
-                Income::insert([
+                $incomes[] = [
                     'category_id' => rand(1, 7),
-                    'tracking_id' => $faker->unique()->numberBetween($min = 10000, $max = 50000),
+                    'tracking_id' => $faker->unique()->numberBetween($min = 0, $max = 999999),
                     'booking_date' =>  $faker->dateTimeBetween('-90 days', now()),
                     'condition_amount' => rand(1, 100),
                     'condition_charge' => rand(1, 100),
@@ -152,12 +152,14 @@
                     'notes' => $faker->name(),
                     'created_at' => $faker->dateTimeBetween('-90 days', now()),
                     'updated_at' => $faker->dateTimeBetween('-10 days', now())
-                ]);
+                ];
 
 
-                Expanse::insert([
+
+
+                $expanses[] = [
                     'category_id' => rand(8, 16),
-                    'tracking_id' => $faker->unique()->numberBetween($min = 51000, $max = 99999),
+                    'tracking_id' => $faker->unique()->numberBetween($min = 0, $max = 999999),
                     'booking_date' =>  $faker->dateTimeBetween('-90 days', now()),
                     'amount' => rand(1, 100),
                     'quantity' => rand(1, 100),
@@ -165,11 +167,20 @@
                     'notes' => $faker->name(),
                     'created_at' => $faker->dateTimeBetween('-90 days', now()),
                     'updated_at' => $faker->dateTimeBetween('-10 days', now())
-                ]);
+                ];
 
             }
 
+            $chunks1 = array_chunk($incomes, 5000);
+            $chunks2 = array_chunk($expanses, 5000);
 
+            foreach ($chunks1 as $chunk) {
+                Income::insert($chunk);
+            }
+
+            foreach ($chunks2 as $chunk) {
+                Expanse::insert($chunk);
+            }
         }
 
     }
