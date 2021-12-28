@@ -3,15 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login | Laravel Admin Starter Kit - Radmin</title>
+    <title>Login | Kortoa-Couriar Service</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon"/>
-
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ asset('assets/backend/plugins/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/plugins/ionicons/dist/css/ionicons.min.css') }}">
@@ -21,13 +18,13 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('src/js/vendor/modernizr-2.8.3.min.js') }}"></script>
 </head>
-
 <body>
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
+                                                                                                                       your
+                                                                                                                       browser</a>
+                          to improve your experience.</p>
 <![endif]-->
-
 <div class="auth-wrapper">
     <div class="container-fluid h-100">
         <div class="row flex-row h-100">
@@ -35,7 +32,7 @@
                 <div class="authentication-form mx-auto">
                     <div class="logo-centered">
                         <a href="#"><img height="50px" src="{{ asset('assets/backend/img/logo-only.png') }}"
-                                                                   alt="logo"></a>
+                                         alt="logo"></a>
                     </div>
                     <p>Welcome back! </p>
                     <form method="POST" action="{{ route('login') }}">
@@ -44,7 +41,8 @@
                             <input id="email" type="email" placeholder="Email"
                                    class="form-control @error('email') is-invalid @enderror"
                                    name="email"
-                                   value="{{ (env('APP_ENV')=='local') ? 'admin@mail.com' : '' }}" required autocomplete="email" autofocus>
+                                   value="{{ (env('APP_ENV')!='local') ? 'admin@mail.com' : '' }}" required
+                                   autocomplete="email" autofocus>
                             <i class="ik ik-user"></i>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -55,7 +53,7 @@
                         <div class="form-group">
                             <input id="password" type="password" placeholder="Password"
                                    class="form-control @error('password') is-invalid @enderror" name="password"
-                                   value="{{ (env('APP_ENV')=='local') ? 'password' : '' }}" required>
+                                   value="{{ (env('APP_ENV')!='local') ? 'password' : '' }}" required>
                             <i class="ik ik-lock"></i>
                             @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -83,19 +81,16 @@
                         <div class="register">
                             <p>{{ __('No account?')}} <a href="{{url('register')}}">{{ __('Sign Up')}}</a></p>
                         </div>
-
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-        <script src="{{ asset('src/js/vendor/jquery-3.3.1.min.js') }}"></script>
-        <script src="{{ asset('assets/backend/plugins/popper.js/dist/umd/popper.min.js') }}"></script>
-        <script src="{{ asset('assets/backend/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('assets/backend/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}"></script>
-        <script src="{{ asset('assets/backend/plugins/screenfull/dist/screenfull.js') }}"></script>
-
+<script src="{{ asset('src/js/vendor/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('assets/backend/plugins/popper.js/dist/umd/popper.min.js') }}"></script>
+<script src="{{ asset('assets/backend/plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/backend/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/backend/plugins/screenfull/dist/screenfull.js') }}"></script>
 </body>
 </html>
